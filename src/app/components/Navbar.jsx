@@ -2,8 +2,9 @@
 import Link from 'next/link'
 import React, {useState} from 'react'
 import Image from 'next/image'
-import NavLink from './NavList'
+import NavLink from './NavLink'
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import MenuOverlay from "./MenuOverlay";
 
 const navLinks = [
     {
@@ -69,6 +70,7 @@ const Navbar = () => {
         </ul>
     </div>
     </div>
+    {navbarOpen ? <MenuOverlay links={navLinks}/>:null}
     </nav>
   )
 }
