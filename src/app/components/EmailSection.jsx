@@ -7,9 +7,11 @@ import Image from "next/image";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
@@ -18,24 +20,26 @@ const EmailSection = () => {
     const JSONdata = JSON.stringify(data);
     const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+      const resData = await response.json();
 
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
+      if (response.status === 200) {
+        console.log("Message sent successfully:", resData);
+        setEmailSubmitted(true);
+      } else {
+        throw new Error(resData.error || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setError("Failed to send message. Please try again later!");
     }
   };
 
@@ -47,11 +51,10 @@ const EmailSection = () => {
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">
-          Let us  Connect
+          Let's Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-           I'm currently exploring new opportunities and my inbox is always open. Whether you have a question or just want to say hello, I'll do my best to respond promptly!
+          I'm currently exploring new opportunities and my inbox is always open. Whether you have a question or just want to say hello, I'll do my best to respond promptly!
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/miccx-24">
@@ -111,10 +114,12 @@ const EmailSection = () => {
               <textarea
                 name="message"
                 id="message"
+                required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Let's talk about..."
               />
             </div>
+            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button
               type="submit"
               className="bg-[#ABCDE1] hover:bg-primary-600 text-black font-medium py-2.5 px-5 rounded-lg w-full"

@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.re_6bF5KR1b_QK1RrBfRBW2dF5cJztUvfcho);
+const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
-export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
+export async function POST(req) {
   try {
+    const { email, subject, message } = await req.json();
+    console.log("Received request:", { email, subject, message });
+
+    if (!email || !subject || !message) {
+      return NextResponse.json(
+        { error: "Email, subject, and message are required" },
+        { status: 400 }
+      );
+    }
+
     const data = await resend.emails.send({
       from: fromEmail,
-      to: [fromEmail, email],
+      to: [fromEmail, email], // Send to both the from email and the user's email
       subject: subject,
       react: (
         <>
@@ -21,8 +29,18 @@ export async function POST(req, res) {
         </>
       ),
     });
+
+    console.log("Email sent successfully:", data);
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    console.error("Error sending email:", error);
+    // Log more details about the error
+    if (error.response) {
+      console.error("Resend API error:", error.response.body);
+    }
+    return NextResponse.json(
+      { error: "Failed to send email", details: error.message },
+      { status: 500 }
+    );
   }
 }
