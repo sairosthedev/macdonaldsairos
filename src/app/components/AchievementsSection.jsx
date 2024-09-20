@@ -21,12 +21,12 @@ const achievementsList = [
     value: "100,000",
   },
   {
-    metric: "Awards",
-    value: "7",
+    metric: "Certificates",
+    value: "14",
   },
   {
     metric: "Years",
-    value: "2",
+    value: "3",
   },
 ];
 
