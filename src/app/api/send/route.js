@@ -1,46 +1,50 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
-
-export async function POST(req) {
+export const POST = async (req) => {
   try {
-    const { email, subject, message } = await req.json();
-    console.log("Received request:", { email, subject, message });
+    const body = await req.text();
+    console.log('Raw request body:', body);
+
+    if (!body) {
+      throw new Error('Request body is empty');
+    }
+
+    const { email, subject, message } = JSON.parse(body);
+
+    // Log the parsed request body
+    console.log('Parsed request body:', { email, subject, message });
 
     if (!email || !subject || !message) {
-      return NextResponse.json(
-        { error: "Email, subject, and message are required" },
-        { status: 400 }
-      );
+      throw new Error('Missing required fields');
     }
 
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email], // Send to both the from email and the user's email
-      subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+    // Create a transporter object using SMTP
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.office365.com', // SMTP server
+      port: 587, // SMTP port
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER, // SMTP user from environment variables
+        pass: process.env.SMTP_PASS, // SMTP password from environment variables
+      },
     });
 
-    console.log("Email sent successfully:", data);
-    return NextResponse.json(data);
+    // Verify the connection configuration
+    await transporter.verify();
+
+    // Set up email data
+    const mailOptions = {
+      from: email, // Sender address
+      to: 'macdonaldsairos24@outlook.com', // Replace with your recipient email
+      subject: subject || 'Contact Form Submission',
+      text: message,
+    };
+
+    // Send mail
+    await transporter.sendMail(mailOptions);
+    return new Response(JSON.stringify({ message: 'Email sent successfully!' }), { status: 200 });
   } catch (error) {
-    console.error("Error sending email:", error);
-    // Log more details about the error
-    if (error.response) {
-      console.error("Resend API error:", error.response.body);
-    }
-    return NextResponse.json(
-      { error: "Failed to send email", details: error.message },
-      { status: 500 }
-    );
+    console.error('Error sending email:', error.message);
+    return new Response(JSON.stringify({ error: 'Failed to send email', details: error.message }), { status: 500 });
   }
-}
+};

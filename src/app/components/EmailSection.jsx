@@ -4,14 +4,17 @@ import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true); // Set loading to true
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
@@ -29,17 +32,20 @@ const EmailSection = () => {
         body: JSONdata,
       });
 
-      const resData = await response.json();
-
-      if (response.status === 200) {
-        console.log("Message sent successfully:", resData);
-        setEmailSubmitted(true);
-      } else {
+      if (!response.ok) {
+        const resData = await response.json();
+        console.error("Error response from server:", resData);
         throw new Error(resData.error || "Failed to send message");
       }
+
+      const resData = await response.json();
+      console.log("Message sent successfully:", resData);
+      setEmailSubmitted(true);
     } catch (error) {
       console.error("Error sending message:", error);
-      setError("Failed to send message. Please try again later!");
+      setError(`Failed to send message. Please try again later! Error: ${error.message}`);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -67,9 +73,14 @@ const EmailSection = () => {
       </div>
       <div>
         {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-green-500 text-sm mt-2"
+          >
             Email sent successfully!
-          </p>
+          </motion.p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
             <div className="mb-6">
@@ -84,7 +95,7 @@ const EmailSection = () => {
                 type="email"
                 id="email"
                 required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="millicent@gmail.com"
               />
             </div>
@@ -100,7 +111,7 @@ const EmailSection = () => {
                 type="text"
                 id="subject"
                 required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="Just saying hi"
               />
             </div>
@@ -115,16 +126,17 @@ const EmailSection = () => {
                 name="message"
                 id="message"
                 required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="Let's talk about..."
               />
             </div>
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button
               type="submit"
-              className="bg-[#ABCDE1] hover:bg-primary-600 text-black font-medium py-2.5 px-5 rounded-lg w-full"
+              className={`bg-[#ABCDE1] hover:bg-primary-600 text-black font-medium py-2.5 px-5 rounded-lg w-full transition duration-300 ease-in-out ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={loading} // Disable button while loading
             >
-              Send Message
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         )}
