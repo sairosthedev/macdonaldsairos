@@ -3,7 +3,18 @@ import React, { useTransition, useState } from "react";
 import Image from 'next/image';
 import TabButton from "./TabButton";
 
-const TAB_DATA = [
+const AboutSection = ({ playSound }) => {
+  const [tab, setTab] = useState("skills");
+  const [isPending, startTransition] = useTransition();
+
+  const handleTabChange = (id) => {
+    startTransition(() => {
+      setTab(id);
+      if (playSound) playSound();
+    });
+  };
+
+  const TAB_DATA = [
     {
       title: "Skills",
       id: "skills",
@@ -51,18 +62,10 @@ const TAB_DATA = [
       ),
     },
   ];
-  
-const AboutSection = () => {
-    const [tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
 
-  const handleTabChange = (id) => {
-    startTransition(() => {
-      setTab(id);
-    });
-  };
   return (
-    <section className='text-white' id="about"><div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+    <section className='text-white' id="about">
+      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
         <Image src="/images/hero.png" width={500} height={500}
          className="rounded-full object cover" />
          <div className="mt-4 md:mt-0 text-left flex flex-col h-full">

@@ -11,6 +11,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "framer-motion": "^11.5.5",
+    "lucide-react": "^0.445.0",
     "next": "14.2.11",
     "next-share": "^0.27.0",
     "react": "^18",
@@ -19,7 +20,8 @@
     "react-floating-whatsapp": "^5.0.8",
     "react-type-animation": "^3.2.0",
     "react-whatsapp-widget": "^2.2.0",
-    "resend": "^4.0.0"
+    "resend": "^4.0.0",
+    "use-sound": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^8",

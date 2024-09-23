@@ -6,20 +6,22 @@ import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
 import AchievementsSection from "./components/AchievementsSection";
+import SoundProvider from "./components/SoundProvider";
 
 export default function Home() {
   return(
     <main className="flex min-h-screen flex-col bg-black">
       <Navbar/>
-      <div class="container mt-24 mx-auto px-12 py-4 ">
-      <HeroSection />
-      <AchievementsSection />
-      <AboutSection/>
-      <ProjectsSection/>
-      <EmailSection/>
+      <div className="container mt-24 mx-auto px-12 py-4">
+        <HeroSection />
+        <AchievementsSection />
+        <SoundProvider>
+          <AboutSection />
+        </SoundProvider>
+        <ProjectsSection />
+        <EmailSection />
       </div>
       <Footer/>
     </main>
   )
-
 }
