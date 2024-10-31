@@ -1,29 +1,29 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
-
-
+import { motion, useInView, useAnimation } from "framer-motion";
 
 const projectsData = [
   {
     id: 1,
-    title: "Restaurant Management System Website",
-    description: "Discover a culinary haven at Macdonald Sairos Food Bucket, where we.... ",
+    title: "Restaurant Management System",
+    description: "A comprehensive platform for restaurant operations, featuring real-time ordering, inventory management, and analytics dashboard.",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     id: 2,
-    title: "Photography Portfolio Website",
-    description: "Project 2 description",
+    title: "Artistry Portfolio",
+    description: "A minimalist photography portfolio showcasing creative work with dynamic galleries and smooth transitions.",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"]
   },
   {
     id: 3,
@@ -33,6 +33,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     id: 4,
@@ -42,6 +43,7 @@ const projectsData = [
     tag: ["All", "Mobile"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     id: 5,
@@ -51,6 +53,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     id: 6,
@@ -60,6 +63,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
 ];
 
@@ -67,62 +71,113 @@ const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const controls = useAnimation();
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
+    controls.start("visible"); // Restart animations when tag changes
   };
 
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
   );
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
   const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
+    hidden: { y: 50, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8
+      }
+    }
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
-      </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
-      </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.6, delay: index * 0.7 }}
-          >
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
+    <section id="projects" className="py-20 px-4 bg-[#121212]">
+      <div className="max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col items-center gap-4 mb-16"
+        >
+          <div className="relative">
+            <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent pb-2">
+              Featured Projects
+            </h2>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full"></div>
+          </div>
+          <p className="text-gray-400 text-xl text-center max-w-2xl mt-6">
+            Explore my latest work and creative endeavors that showcase my expertise in web development and design.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap justify-center items-center gap-3 py-6"
+        >
+          {["All", "Web", "Mobile"].map((tagName) => (
+            <ProjectTag
+              key={tagName}
+              onClick={handleTagChange}
+              name={tagName}
+              isSelected={tag === tagName}
             />
-          </motion.li>
-        ))}
-      </ul>
+          ))}
+        </motion.div>
+
+        <motion.ul 
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.li
+              key={index}
+              variants={cardVariants}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              className={`transform transition-all duration-300 ${
+                hoveredIndex === index ? 'scale-105 z-10' : 'scale-100 z-0'
+              }`}
+            >
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                imgUrl={project.image}
+                gitUrl={project.gitUrl}
+                previewUrl={project.previewUrl}
+                technologies={project.technologies}
+              />
+            </motion.li>
+          ))}
+        </motion.ul>
+      </div>
     </section>
   );
 };
