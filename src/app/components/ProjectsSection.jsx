@@ -11,7 +11,7 @@ const projectsData = [
     description: "A comprehensive platform for restaurant operations, featuring real-time ordering, inventory management, and analytics dashboard.",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/miccx-24/web-tec.git",
     previewUrl: "/",
     technologies: ["React", "Node.js", "MongoDB"]
   },
