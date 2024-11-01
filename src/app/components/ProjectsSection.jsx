@@ -12,7 +12,7 @@ const projectsData = [
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/miccx-24/web-tec.git",
-    previewUrl: "/",
+    previewUrl: "https://restaurant-sairos.vercel.app",
     technologies: ["React", "Node.js", "MongoDB"]
   },
   {
