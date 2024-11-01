@@ -13,7 +13,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/miccx-24/web-tec.git",
     previewUrl: "https://restaurant-sairos.vercel.app",
-    technologies: ["React", "Node.js", "MongoDB"]
+    technologies: ["React + Vite", "Node.js", "MongoDB"]
   },
   {
     id: 2,
