@@ -4,78 +4,89 @@ import Image from "next/image";
 import Link from 'next/link';
 import { TypeAnimation } from 'react-type-animation';
 import RainEffect from "./RainEffect";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
     return (
         <section className="relative min-h-screen lg:py-16">
             <RainEffect />
-            <div className="grid grid-cols-1 sm:grid-cols-12 relative z-10 max-w-7xl mx-auto px-4 gap-8 items-center">
-                <div className="col-span-7 place-self-center text-center sm:text-left justify-self-start">
-                    <h1 className="text-white mb-4 text-4xl sm:text-4xl lg:text-6xl font-extrabold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-green-700">Hello, I'm {""}</span>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/40 backdrop-blur-[2px] z-0"></div>
+            
+            <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-float"></div>
+                <div className="absolute bottom-20 right-10 w-40 h-40 bg-green-500/20 rounded-full blur-2xl animate-float-delayed"></div>
+                <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl animate-pulse"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-12 relative z-10 max-w-7xl mx-auto px-4 gap-12 items-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="col-span-7 place-self-center text-center sm:text-left justify-self-start"
+                >                    
+                    <h1 className="text-white mb-6 text-4xl sm:text-5xl lg:text-7xl font-extrabold">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 animate-gradient">Hello, I'm {""}</span>
                         <TypeAnimation
                             sequence={[
-                                ' MacSairos',
-                                1000,
+                                ' Macdonald Sairos',
+                                1500,
                                 'a Data Scientist',
-                                1000,
+                                1500,
                                 'a Web Developer',
-                                1000,
+                                1500,
                                 'a UI/UX Designer',
-                                1000,
+                                1500,
                                 'a Graphics Designer',
-                                1000,
-                                'a Front-End Developer',
-                                1000,
-                                'a Back-End Developer',
-                                1000
+                                1500,
+                                'a Full-Stack Developer',
+                                1500
                             ]}
                             wrapper="span"
-                            speed={10}
-                            className="bg-gradient-to-r from-blue-400 to-green-400 text-transparent bg-clip-text"
+                            speed={50}
+                            className="bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 text-transparent bg-clip-text"
                             repeat={Infinity}
                         />
                     </h1>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-8 lg:text-xl max-w-2xl leading-relaxed">
-                        I am a versatile and skilled professional with a strong background in software development, data science, and informatics. With a passion for leveraging technology to solve complex problems, I have developed a diverse skill set that spans across web development, data analysis, and information management. My goal is to create innovative solutions that drive efficiency and enhance user experiences.
+                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-10 lg:text-xl max-w-2xl leading-relaxed font-light">
+                        Transforming ideas into elegant solutions through code and design. With expertise in software development, data science, and informatics, I create innovative digital experiences that make a difference. Let's build something extraordinary together.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="px-6 py-3 w-full sm:w-fit rounded-full bg-gradient-to-r from-blue-800 via-green-300 to-orange-700 hover:opacity-90 text-white font-semibold transition-all duration-300 transform hover:scale-105">
-                            Consider Me
-                        </button>
-                        <a 
-                            href="/CV.pdf" 
-                            download="CV.pdf"
-                            className="group relative px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-r from-blue-800 via-green-300 to-orange-700 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
-                        >
-                            <span className="flex items-center justify-center gap-2 bg-black hover:bg-slate-900 rounded-full px-5 py-2 text-white">
-                                Download Curriculum Vitae
-                                <svg 
-                                    className="w-5 h-5 group-hover:translate-x-1 transition-transform" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </span>
-                        </a>
+                    
+                    <div className="flex flex-col sm:flex-row gap-5 justify-center sm:justify-start">
+                        <Link href="#contact" className="group px-7 py-3 w-fit text-white font-semibold rounded-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20">
+                            Hire Me
+                            <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                        </Link>
+                        <Link href="#projects" className="group px-7 py-3 w-fit text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm">
+                            View Projects
+                            <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                        </Link>
                     </div>
-                </div>
+                </motion.div>
                 
-                <div className="col-span-5 place-self-center mt-8 lg:mt-0">
-                    <div className="relative w-[200px] h-[200px] lg:w-[400px] lg:h-[400px]">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-800 via-green-300 to-orange-700 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                        <Image
-                            src="/images/hero.jpg"
-                            alt="hero"
-                            className="rounded-full absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover border-4 border-white/10 shadow-2xl"
-                            width={300}
-                            height={300}
-                            priority
-                        />
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="col-span-5 place-self-center mt-8 lg:mt-0"
+                >
+                    <div className="relative w-[280px] h-[280px] lg:w-[420px] lg:h-[420px]">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-400 to-green-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 rounded-full blur-2xl opacity-10 animate-pulse-slow"></div>
+                        
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl transform hover:scale-105 transition-transform duration-500 group">
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-green-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <Image
+                                src="/images/hero.jpg"
+                                alt="Macdonald Sairos"
+                                className="rounded-full absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover hover:rotate-6 transition-all duration-500"
+                                width={420}
+                                height={420}
+                                priority
+                            />
+                        </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

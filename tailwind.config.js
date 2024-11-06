@@ -13,6 +13,32 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 3s ease infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'float-delayed': 'float 6s ease-in-out 3s infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+      },
+      boxShadow: {
+        'glow': '0 0 40px -10px rgba(0, 0, 0, 0.3)',
+        'glow-lg': '0 0 60px -15px rgba(0, 0, 0, 0.3)',
+      },
     },
     colors: {
       ...colors,

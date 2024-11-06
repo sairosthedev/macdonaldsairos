@@ -20,7 +20,7 @@ export const POST = async (req) => {
 
     // Create a transporter object using SMTP
     const transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com', // SMTP server
+      host: 'smtp.gmail.com', // SMTP server
       port: 587, // SMTP port
       secure: false, // true for 465, false for other ports
       auth: {
@@ -35,7 +35,7 @@ export const POST = async (req) => {
     // Set up email data
     const mailOptions = {
       from: email, // Sender address
-      to: 'macdonaldsairos24@outlook.com', // Replace with your recipient email
+      to: 'macdonaldsairos24@gmail.com', // Receipient email
       subject: subject || 'Contact Form Submission',
       text: message,
     };

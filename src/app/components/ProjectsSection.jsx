@@ -8,32 +8,32 @@ const projectsData = [
   {
     id: 1,
     title: "Restaurant Management System",
-    description: "A comprehensive platform for restaurant operations, featuring real-time ordering, inventory management, and analytics dashboard.",
+    description: "Enterprise-grade restaurant management platform featuring real-time order processing, inventory tracking, and advanced analytics dashboard for data-driven decision making.",
     image: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/miccx-24/web-tec.git",
+    tag: ["All", "Enterprise"],
+    gitUrl: "https://github.com/miccx-24/RESTAURANT",
     previewUrl: "https://restaurant-sairos.vercel.app",
-    technologies: ["React + Vite", "Node.js", "MongoDB"]
+    technologies: ["React + Vite", "Node.js", "MongoDB", "RESTful API"]
   },
   {
     id: 2,
-    title: "Artistry Portfolio",
-    description: "A minimalist photography portfolio showcasing creative work with dynamic galleries and smooth transitions.",
+    title: "Mac-Fi Network Solutions",
+    description: "Secure WiFi service management platform with integrated authentication system, automated billing, and real-time network monitoring capabilities.",
     image: "/images/projects/2.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    technologies: ["Next.js", "Tailwind", "Framer Motion"]
+    tag: ["All", "Enterprise"],
+    gitUrl: "https://github.com/miccx-24/mac-fi.git",
+    previewUrl: "https://mac-wifi.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "JWT Authentication", "Payment Gateway Integration"]
   },
   {
     id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
+    title: "E-commerce Website",
+    description: "A fully functional e-commerce website with a shopping cart, checkout process, and product management.",
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    technologies: ["React", "Node.js", "MongoDB"]
+    gitUrl: "https://github.com/miccx-24/stokoloko.git",
+    previewUrl: "https://stokoloko.vercel.app/",
+    technologies: ["React", "Tailwind CSS", "React Router","Vite","Framer Motion"]
   },
   {
     id: 4,
@@ -41,29 +41,29 @@ const projectsData = [
     description: "Project 4 description",
     image: "/images/projects/4.png",
     tag: ["All", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
-    technologies: ["React", "Node.js", "MongoDB"]
+    gitUrl: "https://github.com/miccx-24/my-personal-portfolio.git",
+    previewUrl: "https://my-personal-portfolio-ruddy.vercel.app/",
+    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"]
   },
   {
     id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
+    title: "Transportation Management System",
+    description: "A system for managing transportation services, including booking, scheduling, and tracking.",
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    technologies: ["React", "Node.js", "MongoDB"]
+    gitUrl: "https://github.com/miccx-24/online-bus-ticket.git",
+    previewUrl: "https://mac-sairos-online-bus.vercel.app/",
+    technologies: ["React", "Node.js", "MongoDB","Framer Motion","Tailwind CSS","React Router","Vite"]
   },
   {
     id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
+    title: "Boarding House Management System",
+    description: "A system for managing boarding house services, including booking, scheduling, and tracking.",
     image: "/images/projects/6.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    technologies: ["React", "Node.js", "MongoDB"]
+    gitUrl: "https://github.com/miccx-24/boarding_house.git",
+    previewUrl: "https://boarding-house-ruddy.vercel.app/",
+    technologies: ["React", "Node.js", "MongoDB","Framer Motion","Tailwind CSS","React Router","Vite"]
   },
 ];
 
@@ -94,7 +94,7 @@ const ProjectsSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.3
       }
     }
   };
@@ -107,38 +107,40 @@ const ProjectsSection = () => {
       transition: {
         type: "spring",
         bounce: 0.4,
-        duration: 0.8
+        duration: 1.2
       }
+
     }
+
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-[#121212]">
+    <section id="projects" className="py-28 px-4 bg-gradient-to-b from-[#121212] via-[#151515] to-[#1a1a1a]">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col items-center gap-4 mb-16"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="flex flex-col items-center gap-6 mb-24"
         >
-          <div className="relative">
-            <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent pb-2">
-              Featured Projects
+          <div className="relative group">
+            <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent pb-2 group-hover:scale-105 transition-transform duration-300">
+              Professional Portfolio
             </h2>
-            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full"></div>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full transform origin-left transition-transform duration-300 group-hover:scale-x-110"></div>
           </div>
-          <p className="text-gray-400 text-xl text-center max-w-2xl mt-6">
-            Explore my latest work and creative endeavors that showcase my expertise in web development and design.
+          <p className="text-gray-300 text-xl text-center max-w-3xl mt-8 leading-relaxed font-light">
+            Showcasing enterprise-level solutions and innovative applications that demonstrate expertise in modern web development, scalable architecture, and user-centric design.
           </p>
         </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap justify-center items-center gap-3 py-6"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex flex-wrap justify-center items-center gap-6 py-8"
         >
-          {["All", "Web", "Mobile"].map((tagName) => (
+          {["All", "Enterprise", "Web", "Mobile"].map((tagName) => (
             <ProjectTag
               key={tagName}
               onClick={handleTagChange}
@@ -153,7 +155,7 @@ const ProjectsSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mt-12"
         >
           {filteredProjects.map((project, index) => (
             <motion.li
@@ -161,8 +163,10 @@ const ProjectsSection = () => {
               variants={cardVariants}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
-              className={`transform transition-all duration-300 ${
-                hoveredIndex === index ? 'scale-105 z-10' : 'scale-100 z-0'
+              className={`transform transition-all duration-500 ${
+                hoveredIndex === index 
+                  ? 'scale-[1.03] z-10 shadow-2xl shadow-blue-500/10' 
+                  : 'scale-100 z-0'
               }`}
             >
               <ProjectCard
