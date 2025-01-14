@@ -1,178 +1,210 @@
 "use client";
-import Link from 'next/link'
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import NavLink from './NavLink'
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import MenuOverlay from "./MenuOverlay";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import MenuOverlay from "./MenuOverlay";
+import Image from "next/image";
 
 const navLinks = [
-    {
-        title: "About",
-        path: "#about",
-        icon: "🎯"
-    },
-    {
-        title: "Projects",
-        path: "#projects",
-        icon: "💼"
-    },
-    {
-        title: "Contact",
-        path: "#contact",
-        icon: "📧"
-    }
-]
+  {
+    title: "Home",
+    path: "/#home",
+  },
+  {
+    title: "About",
+    path: "/#about",
+  },
+  {
+    title: "Projects",
+    path: "/#projects",
+  },
+  {
+    title: "Contact",
+    path: "/#contact",
+  },
+];
+
+const socialLinks = [
+  {
+    title: "GitHub",
+    url: "https://github.com/miccx-24",
+    icon: "/github-icon.svg"
+  },
+  {
+    title: "LinkedIn",
+    url: "https://www.linkedin.com/in/macdonald-sairos-8b1686186/",
+    icon: "/linkedin-icon.svg"
+  }
+];
 
 const Navbar = () => {
-    const [navbarOpen, setNavbarOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState("");
-    const [isHovered, setIsHovered] = useState(null);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      const scrollPosition = window.scrollY + 100;
 
-            const sections = navLinks.map(link => link.path.slice(1));
-            const currentSection = sections.find(section => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    return rect.top <= 100 && rect.bottom >= 100;
-                }
-                return false;
-            });
-            setActiveSection(currentSection || "");
-        };
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute("id");
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(sectionId);
+        }
+      });
 
-    return (
-        <motion.nav 
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`fixed mx-auto top-0 left-0 right-0 z-20 transition-all duration-300 ease-in-out
-                ${scrolled 
-                    ? 'bg-[rgba(0,0,0,0.85)] backdrop-blur-md border-b border-[#33353F] shadow-lg' 
-                    : 'bg-transparent'}`}
-        >
-            <div className="max-w-7xl mx-auto">
-                <div className="flex items-center justify-between mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <Link 
-                        href={'/'} 
-                        className='relative group text-2xl md:text-5xl text-white font-semibold'
-                    >
-                        <div className="relative flex items-center space-x-3">
-                            <div className="relative">
-                                <Image
-                                    src="/images/logo.jpg"
-                                    alt="Logo"
-                                    width={45}
-                                    height={45}
-                                    className="rounded-full shadow-lg transition-all duration-300 group-hover:scale-110"
-                                />
-                                <motion.div 
-                                    className="absolute -inset-2 rounded-full bg-gradient-to-r from-purple-500/30 to-blue-500/30 blur-lg"
-                                    animate={{
-                                        scale: [1, 1.2, 1],
-                                        rotate: [0, 90, 0],
-                                    }}
-                                    transition={{
-                                        duration: 3,
-                                        repeat: Infinity,
-                                        repeatType: "reverse",
-                                    }}
-                                />
-                            </div>
-                            <span className="hidden sm:block text-lg font-medium text-white/90 group-hover:text-white transition-colors">
-                                My_Portfolio Web
-                            </span>
-                        </div>
-                    </Link>
-                    
-                    <motion.div 
-                        className="mobile-menu block md:hidden"
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <button
-                            onClick={() => setNavbarOpen(!navbarOpen)}
-                            className="flex items-center px-3.5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm
-                                border border-white/20 text-slate-200 hover:text-white hover:border-white/40
-                                transition-all duration-200 ease-in-out hover:bg-white/20
-                                hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                            aria-label="Toggle menu"
-                        >
-                            <motion.div
-                                animate={{ rotate: navbarOpen ? 180 : 0 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                {!navbarOpen ? (
-                                    <Bars3Icon className="h-5 w-5" />
-                                ) : (
-                                    <XMarkIcon className="h-5 w-5" />
-                                )}
-                            </motion.div>
-                        </button>
-                    </motion.div>
+      setScrolled(window.scrollY > 20);
+    };
 
-                    <div className='menu hidden md:block md:w-auto' id="navbar">
-                        <ul className="flex items-center space-x-8">
-                            {navLinks.map((link, index) => (
-                                <motion.li 
-                                    key={index} 
-                                    className="relative group py-2"
-                                    onHoverStart={() => setIsHovered(index)}
-                                    onHoverEnd={() => setIsHovered(null)}
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                                >
-                                    <NavLink 
-                                        href={link.path} 
-                                        title={link.title} 
-                                        icon={link.icon}
-                                        isActive={activeSection === link.path.slice(1)}
-                                        isHovered={isHovered === index}
-                                    />
-                                    <motion.span 
-                                        className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500"
-                                        initial={{ width: "0%" }}
-                                        animate={{ width: isHovered === index ? "100%" : "0%" }}
-                                        transition={{ duration: 0.3 }}
-                                    />
-                                    {activeSection === link.path.slice(1) && (
-                                        <motion.span 
-                                            className="absolute -bottom-1 left-0 h-0.5 w-full bg-white"
-                                            layoutId="activeSection"
-                                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                        />
-                                    )}
-                                </motion.li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <motion.nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[#111111]/90 backdrop-blur-md py-4' : 'bg-transparent py-6'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center justify-between">
+          <Link 
+            href="/"
+            className="flex items-center space-x-3 group"
+          >
+            <div className="relative">
+              <Image
+                src="/images/logo.jpg"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="rounded-full shadow-lg transition-all duration-300 group-hover:scale-110"
+              />
+              <motion.div 
+                className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-lg opacity-75 group-hover:opacity-100"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 90, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
             </div>
+            <span className="hidden sm:block text-lg font-medium text-white/90 group-hover:text-white transition-colors">
+              My Portfolio
+            </span>
+          </Link>
 
-            <AnimatePresence>
-                {navbarOpen && (
-                    <motion.div 
-                        className="md:hidden backdrop-blur-lg bg-black/70"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <MenuOverlay links={navLinks} />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </motion.nav>
-    )
-}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <ul className="flex space-x-8">
+              {navLinks.map((link, index) => (
+                <motion.li
+                  key={index}
+                  className="relative"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link
+                    href={link.path}
+                    className={`text-base font-medium transition-colors duration-300 ${
+                      activeSection === link.path.slice(2)
+                        ? 'text-blue-500'
+                        : 'text-gray-300 hover:text-white'
+                    }`}
+                    onClick={() => setActiveSection(link.path.slice(2))}
+                  >
+                    {link.title}
+                  </Link>
+                  {activeSection === link.path.slice(2) && (
+                    <motion.div
+                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-blue-500 rounded-full"
+                      layoutId="activeSection"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </motion.li>
+              ))}
+            </ul>
 
-export default Navbar
+            {/* Social Links */}
+            <div className="flex items-center space-x-4">
+              {socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full hover:bg-white/10 transition-colors duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Image
+                    src={link.icon}
+                    alt={link.title}
+                    width={20}
+                    height={20}
+                    className="filter invert"
+                  />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setNavbarOpen(!navbarOpen)}
+              className="flex items-center p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            >
+              <div className="space-y-2">
+                <motion.span
+                  animate={navbarOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                  className="block w-8 h-0.5 bg-white"
+                />
+                <motion.span
+                  animate={navbarOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="block w-8 h-0.5 bg-white"
+                />
+                <motion.span
+                  animate={navbarOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                  className="block w-8 h-0.5 bg-white"
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {navbarOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#111111]/95 backdrop-blur-lg"
+          >
+            <MenuOverlay links={navLinks} socialLinks={socialLinks} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
+};
+
+export default Navbar;

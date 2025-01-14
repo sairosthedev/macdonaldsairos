@@ -3,20 +3,12 @@ import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
 import { TypeAnimation } from 'react-type-animation';
-import RainEffect from "./RainEffect";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
     return (
         <section className="relative min-h-screen lg:py-16">
-            <RainEffect />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/40 backdrop-blur-[2px] z-0"></div>
-            
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-float"></div>
-                <div className="absolute bottom-20 right-10 w-40 h-40 bg-green-500/20 rounded-full blur-2xl animate-float-delayed"></div>
-                <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl animate-pulse"></div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#151515] to-[#1a1a1a] z-0"></div>
             
             <div className="grid grid-cols-1 sm:grid-cols-12 relative z-10 max-w-7xl mx-auto px-4 gap-12 items-center">
                 <motion.div 
@@ -26,7 +18,7 @@ const HeroSection = () => {
                     className="col-span-7 place-self-center text-center sm:text-left justify-self-start"
                 >                    
                     <h1 className="text-white mb-6 text-4xl sm:text-5xl lg:text-7xl font-extrabold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 animate-gradient">Hello, I'm {""}</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Hello, I'm {""}</span>
                         <TypeAnimation
                             sequence={[
                                 ' Macdonald Sairos',
@@ -48,8 +40,8 @@ const HeroSection = () => {
                             repeat={Infinity}
                         />
                     </h1>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg mb-10 lg:text-xl max-w-2xl leading-relaxed font-light">
-                        Transforming ideas into elegant solutions through code and design. With expertise in software development, data science, and informatics, I create innovative digital experiences that make a difference. Let's build something extraordinary together.
+                    <p className="text-gray-300 text-base sm:text-lg mb-10 lg:text-xl max-w-2xl leading-relaxed font-light">
+                        Transforming ideas into elegant solutions through code and design. With expertise in software development, data science, and informatics, I create innovative digital experiences that make a difference.
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-5 justify-center sm:justify-start">
@@ -57,7 +49,7 @@ const HeroSection = () => {
                             Hire Me
                             <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
-                        <Link href="#projects" className="group px-7 py-3 w-fit text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm">
+                        <Link href="#projects" className="group px-7 py-3 w-fit text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/10">
                             View Projects
                             <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
@@ -71,11 +63,7 @@ const HeroSection = () => {
                     className="col-span-5 place-self-center mt-8 lg:mt-0"
                 >
                     <div className="relative w-[280px] h-[280px] lg:w-[420px] lg:h-[420px]">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-400 to-green-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 rounded-full blur-2xl opacity-10 animate-pulse-slow"></div>
-                        
-                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl transform hover:scale-105 transition-transform duration-500 group">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-green-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl transform hover:scale-105 transition-transform duration-500">
                             <Image
                                 src="/images/hero.jpg"
                                 alt="Macdonald Sairos"

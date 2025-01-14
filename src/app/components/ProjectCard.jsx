@@ -1,79 +1,96 @@
 import React, { useState } from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technologies }) => {
+const ProjectCard = ({ title, description, gitUrl, previewUrl, technologies, image }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      className="transform transition-all duration-500 hover:scale-105 group/card"
+    <motion.div 
+      className="group bg-[#1a1a1a] rounded-xl overflow-hidden flex flex-col border border-gray-800 hover:border-purple-500/50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div
-        className="h-52 md:h-72 rounded-t-xl relative group overflow-hidden shadow-xl 
-          before:absolute before:inset-0 before:z-10 before:bg-black before:opacity-0 before:transition-opacity before:duration-500
-          group-hover/card:before:opacity-10"
-        style={{ 
-          background: `url(${imgUrl})`, 
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          transition: "transform 0.5s ease-in-out",
-        }}
-      >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
-        
-        {/* Icons Overlay */}
-        <div className="overlay flex items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 opacity-0 group-hover/card:opacity-100 group-hover/card:bg-opacity-80 transition-all duration-500 z-20">
-          <Link
-            href={gitUrl}
-            className="h-14 w-14 mr-4 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link 
-              transform transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
-          >
-            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-          </Link>
-          <Link
-            href={previewUrl}
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link 
-              transform transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-          </Link>
-        </div>
+      <div className="relative w-full h-48">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
       </div>
 
-      <div className="text-white rounded-b-xl bg-[#181818] p-6 shadow-xl relative z-10
-        transform transition-all duration-500 group-hover/card:shadow-purple-500/10">
-        <h5 className="text-xl font-semibold mb-2 transition-all duration-300
-          hover:text-purple-500 hover:translate-x-1">
-          {title}
-        </h5>
-        <p className="text-[#ADB7BE] text-sm leading-relaxed transition-all duration-300
-          group-hover/card:text-gray-300">
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex justify-between items-start mb-4">
+          <motion.h3 
+            className="text-xl font-bold text-white/90 group-hover:text-purple-500 transition-colors duration-300"
+            whileHover={{ x: 5 }}
+          >
+            {title}
+          </motion.h3>
+          <div className="flex gap-3">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Link
+                href={gitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full border border-gray-700 hover:border-purple-500 flex items-center justify-center
+                  group/link transition-all duration-300 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+              >
+                <CodeBracketIcon className="h-5 w-5 text-gray-400 group-hover/link:text-purple-500 transition-colors duration-300" />
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Link
+                href={previewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full border border-gray-700 hover:border-purple-500 flex items-center justify-center
+                  group/link transition-all duration-300 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+              >
+                <EyeIcon className="h-5 w-5 text-gray-400 group-hover/link:text-purple-500 transition-colors duration-300" />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
           {description}
         </p>
-        {technologies && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {technologies.map((tech, index) => (
-              <span
-                key={index}
-                className={`px-3 py-1 text-sm rounded-full transition-all duration-300
-                  border border-purple-500/20
-                  ${isHovered 
-                    ? 'bg-purple-500/20 text-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.2)]' 
-                    : 'bg-purple-500/10 text-purple-500'
-                  }
-                  hover:bg-purple-500/30 hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]`}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
+
+        <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-gray-800">
+          {technologies.map((tech, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              className={`px-3 py-1 text-xs rounded-full transition-all duration-300
+                ${isHovered 
+                  ? 'bg-purple-500/10 text-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.15)]' 
+                  : 'bg-gray-800 text-gray-400'
+                }
+                hover:bg-purple-500/20 hover:scale-105`}
+            >
+              {tech}
+            </motion.span>
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
