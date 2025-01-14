@@ -1,8 +1,52 @@
 "use client"
 import React, { useTransition, useState } from "react";
-import Image from 'next/image';
 import TabButton from "./TabButton";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+
+const CodeBlock = () => {
+  const codeLines = [
+    "class Programmer {",
+    "  constructor() {",
+    "    this.name = 'Macdonald';",
+    "    this.role = 'Full Stack';",
+    "  }",
+    "  code() {",
+    "    return '💻';",
+    "  }",
+    "  debug() {",
+    "    return '🔍';",
+    "  }",
+    "  deploy() {",
+    "    return '🚀';",
+    "  }",
+    "}"
+  ];
+
+  return (
+    <div className="w-full h-full bg-[#1E1E1E] rounded-lg p-4 font-mono text-sm overflow-hidden">
+      {codeLines.map((line, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="flex items-center space-x-2"
+        >
+          <span className="text-gray-500">{index + 1}</span>
+          <motion.span
+            className="text-purple-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            {line}
+          </motion.span>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 
 const AboutSection = ({ playSound }) => {
   const [tab, setTab] = useState("skills");
@@ -126,33 +170,60 @@ const AboutSection = ({ playSound }) => {
   return (
     <section className='text-white' id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <div className="relative group cursor-pointer">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            className="relative bg-[#1E1E1E] rounded-lg p-4"
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Image 
-              src="/images/hero.png" 
-              width={500} 
-              height={500}
-              className="relative rounded-full object-cover"
-              alt="Profile picture"
-            />
+            <div className="flex flex-col space-y-4">
+              {/* Animated Terminal Header */}
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-gray-400 text-sm ml-2">programmer.js</span>
+              </div>
+              
+              {/* Code Animation */}
+              <CodeBlock />
+
+              {/* Animated Icons */}
+              <div className="flex justify-center space-x-4">
+                {['💻', '🚀', '⚡', '🔍'].map((emoji, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ y: 0 }}
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.2,
+                    }}
+                    className="text-2xl"
+                  >
+                    {emoji}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
+
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 mb-4">About Me</h2>  
           <p className="text-base lg:text-lg text-gray-300 leading-7">
             I am a full stack web developer who loves building interactive and responsive web applications. My expertise includes JavaScript, React, Redux, Node.js, Express, PostgreSQL, Sequelize, HTML, CSS, and Git. I am a fast learner, always eager to broaden my knowledge and skills. As a team player, I thrive on collaborating with others to create outstanding applications.
           </p>
           
-          <button 
-            onClick={() => window.open('/CV.pdf')}
+          <Link 
+            href="/CV.pdf"
+            target="_blank"
             className="w-fit px-6 py-3 mt-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold transition-all hover:scale-105"
           >
             Download CV
-          </button>
+          </Link>
 
           <div className="flex flex-row justify-start mt-8 gap-2">
             {["skills", "education", "certifications"].map((tabId) => (
