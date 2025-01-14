@@ -81,7 +81,7 @@ const Footer = () => {
                 <FaWhatsapp size={28} />
               </Link>
               <Link 
-                href="https://github.com/miccx-24"
+                href="https://github.com/sairosthedev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
