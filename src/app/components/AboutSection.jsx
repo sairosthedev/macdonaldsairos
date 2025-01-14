@@ -1,47 +1,116 @@
 "use client"
-import React, { useTransition, useState } from "react";
+import React, { useTransition, useState, useEffect } from "react";
 import TabButton from "./TabButton";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const MatrixRain = () => {
+  const characters = ['0', '1', '>', '<', '/', '*', '&', '$', '#', '@'];
+  return (
+    <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+      {[...Array(10)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute text-green-500 text-xs font-mono"
+          initial={{ y: -100, x: `${i * 10}%` }}
+          animate={{ y: "100vh" }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+            delay: i * 0.2
+          }}
+        >
+          {characters[i]}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+const TypeWriter = ({ text, className }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text]);
+
+  return <span className={className}>{displayText}</span>;
+};
+
 const CodeBlock = () => {
+  const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
+  const [activeLine, setActiveLine] = useState(0);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   const codeLines = [
     "class Programmer {",
     "  constructor() {",
     "    this.name = 'Macdonald';",
     "    this.role = 'Full Stack';",
+    "    this.level = 'Pro Gamer';",
     "  }",
     "  code() {",
-    "    return '💻';",
+    "    return '💻 Coding...';",
     "  }",
     "  debug() {",
-    "    return '🔍';",
+    "    return '🔍 Debugging...';",
     "  }",
     "  deploy() {",
-    "    return '🚀';",
+    "    return '🚀 Deploying...';",
+    "  }",
+    "  game() {",
+    "    return '🎮 Gaming...';",
     "  }",
     "}"
   ];
 
+  useEffect(() => {
+    if (activeLine < codeLines.length) {
+      const timeout = setTimeout(() => {
+        setActiveLine(prev => prev + 1);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [activeLine]);
+
   return (
-    <div className="w-full h-full bg-[#1E1E1E] rounded-lg p-4 font-mono text-sm overflow-hidden">
+    <div className="w-full h-full bg-[#1E1E1E] rounded-lg p-4 font-mono text-sm overflow-hidden relative">
+      <MatrixRain />
       {codeLines.map((line, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="flex items-center space-x-2"
+          animate={{ 
+            opacity: index <= activeLine ? 1 : 0,
+            x: index <= activeLine ? 0 : -20
+          }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center space-x-2 relative"
         >
-          <span className="text-gray-500">{index + 1}</span>
-          <motion.span
-            className="text-purple-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
+          <span className="text-gray-500 min-w-[2ch]">{(index + 1).toString().padStart(2, '0')}</span>
+          <motion.div
+            className="flex-1"
+            whileHover={{ scale: 1.01, x: 5 }}
           >
-            {line}
-          </motion.span>
+            <span className={`text-purple-400 ${index === activeLine && showCursor ? 'border-r-2 border-white' : ''}`}>
+              {index <= activeLine ? line : ''}
+            </span>
+          </motion.div>
         </motion.div>
       ))}
     </div>
@@ -51,6 +120,8 @@ const CodeBlock = () => {
 const AboutSection = ({ playSound }) => {
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
+  const [activeEmoji, setActiveEmoji] = useState(null);
+  const [showBonus, setShowBonus] = useState(false);
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -173,17 +244,39 @@ const AboutSection = ({ playSound }) => {
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
           <motion.div
-            className="relative bg-[#1E1E1E] rounded-lg p-4"
+            className="relative bg-[#1E1E1E] rounded-lg p-4 overflow-hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <div className="flex flex-col space-y-4">
               {/* Animated Terminal Header */}
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="text-gray-400 text-sm ml-2">programmer.js</span>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <motion.div 
+                    className="w-3 h-3 rounded-full bg-red-500"
+                    whileHover={{ scale: 1.2 }}
+                  />
+                  <motion.div 
+                    className="w-3 h-3 rounded-full bg-yellow-500"
+                    whileHover={{ scale: 1.2 }}
+                  />
+                  <motion.div 
+                    className="w-3 h-3 rounded-full bg-green-500"
+                    whileHover={{ scale: 1.2 }}
+                  />
+                  <TypeWriter 
+                    text="programmer.js" 
+                    className="text-gray-400 text-sm ml-2"
+                  />
+                </div>
+                <motion.button
+                  onClick={() => setShowBonus(!showBonus)}
+                  className="text-gray-400 hover:text-purple-400 text-sm"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {showBonus ? '🎮 Game Mode' : '👨‍💻 Code Mode'}
+                </motion.button>
               </div>
               
               {/* Code Animation */}
@@ -191,17 +284,25 @@ const AboutSection = ({ playSound }) => {
 
               {/* Animated Icons */}
               <div className="flex justify-center space-x-4">
-                {['💻', '🚀', '⚡', '🔍'].map((emoji, index) => (
+                {['💻', '🚀', '⚡', '🔍', '🎮', '🏆'].map((emoji, index) => (
                   <motion.span
                     key={index}
                     initial={{ y: 0 }}
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.2,
+                    animate={{ 
+                      y: [-5, 5, -5],
+                      scale: activeEmoji === emoji ? 1.2 : 1,
+                      rotate: activeEmoji === emoji ? [0, -10, 10, 0] : 0
                     }}
-                    className="text-2xl"
+                    transition={{
+                      y: { duration: 2, repeat: Infinity },
+                      scale: { duration: 0.2 },
+                      rotate: { duration: 0.2 }
+                    }}
+                    onHoverStart={() => setActiveEmoji(emoji)}
+                    onHoverEnd={() => setActiveEmoji(null)}
+                    className="text-2xl cursor-pointer"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     {emoji}
                   </motion.span>
