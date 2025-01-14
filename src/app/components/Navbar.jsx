@@ -10,30 +10,39 @@ const navLinks = [
   {
     title: "Home",
     path: "/#home",
-    icon: "🏠"
+    icon: "🏠",
+    color: "from-green-400 to-emerald-500"
   },
   {
     title: "About",
     path: "/#about",
-    icon: "👨‍💻"
+    icon: "👨‍💻",
+    color: "from-blue-400 to-cyan-500"
   },
   {
     title: "Projects",
     path: "/#projects",
-    icon: "🎮"
+    icon: "🎮",
+    color: "from-purple-400 to-indigo-500"
   },
   {
     title: "Contact",
     path: "/#contact",
-    icon: "📬"
+    icon: "📬",
+    color: "from-pink-400 to-rose-500"
   },
 ];
 
 const socialLinks = [
   {
     title: "GitHub",
-    url: "https://github.com/miccx-24",
+    url: "https://github.com/sairosthedev",
     icon: "/github-icon.svg"
+  },
+  {
+    title: "WhatsApp",
+    url: "https://wa.me/+263786033933",
+    icon: "/whatsapp-icon.svg"
   },
   {
     title: "LinkedIn",
@@ -42,13 +51,19 @@ const socialLinks = [
   }
 ];
 
-const GlowingBorder = ({ children }) => (
+const GlowingBorder = ({ children, active }) => (
   <div className="relative group">
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+    <div className={`absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-tilt ${
+      active ? 'animate-pulse' : ''
+    }`}></div>
     <div className="relative">
       {children}
     </div>
   </div>
+);
+
+const PixelCorner = ({ position }) => (
+  <div className={`absolute w-2 h-2 bg-purple-500 ${position} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 );
 
 const Navbar = () => {
@@ -80,6 +95,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const playHoverSound = () => {
+    const audio = new Audio('/hover.mp3');
+    audio.volume = 0.2;
+    audio.play().catch(() => {});
+  };
+
+  const playClickSound = () => {
+    const audio = new Audio('/click.mp3');
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  };
+
   return (
     <motion.nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -94,10 +121,16 @@ const Navbar = () => {
           <Link 
             href="/"
             className="flex items-center space-x-3 group"
+            onMouseEnter={playHoverSound}
+            onClick={playClickSound}
           >
-            <GlowingBorder>
+            <GlowingBorder active={!scrolled}>
               <div className="relative">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center font-press-start text-white text-lg">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center font-press-start text-white text-lg group">
+                  <PixelCorner position="top-0 left-0" />
+                  <PixelCorner position="top-0 right-0" />
+                  <PixelCorner position="bottom-0 left-0" />
+                  <PixelCorner position="bottom-0 right-0" />
                   MS
                 </div>
                 <motion.div 
@@ -114,9 +147,13 @@ const Navbar = () => {
                 />
               </div>
             </GlowingBorder>
-            <span className="hidden sm:block font-orbitron text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+            <motion.span 
+              className="hidden sm:block font-orbitron text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               My Portfolio
-            </span>
+            </motion.span>
           </Link>
 
           {/* Desktop Menu */}
@@ -125,11 +162,14 @@ const Navbar = () => {
               {navLinks.map((link, index) => (
                 <motion.li
                   key={index}
-                  className="relative"
+                  className="relative group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onHoverStart={() => setHoveredLink(link.title)}
+                  onHoverStart={() => {
+                    setHoveredLink(link.title);
+                    playHoverSound();
+                  }}
                   onHoverEnd={() => setHoveredLink(null)}
                 >
                   <Link
@@ -139,14 +179,23 @@ const Navbar = () => {
                         ? 'text-purple-400'
                         : 'text-gray-300 hover:text-white'
                     }`}
-                    onClick={() => setActiveSection(link.path.slice(2))}
+                    onClick={() => {
+                      setActiveSection(link.path.slice(2));
+                      playClickSound();
+                    }}
                   >
-                    <span className="text-lg">{link.icon}</span>
+                    <motion.span 
+                      className="text-lg"
+                      whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {link.icon}
+                    </motion.span>
                     <span>{link.title}</span>
                   </Link>
                   {(activeSection === link.path.slice(2) || hoveredLink === link.title) && (
                     <motion.div
-                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+                      className={`absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r ${link.color} rounded-full`}
                       layoutId="activeSection"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
@@ -163,10 +212,16 @@ const Navbar = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300"
+                    className="p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300 relative group"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    onMouseEnter={playHoverSound}
+                    onClick={playClickSound}
                   >
+                    <PixelCorner position="top-0 left-0" />
+                    <PixelCorner position="top-0 right-0" />
+                    <PixelCorner position="bottom-0 left-0" />
+                    <PixelCorner position="bottom-0 right-0" />
                     <Image
                       src={link.icon}
                       alt={link.title}
@@ -184,9 +239,17 @@ const Navbar = () => {
           <div className="md:hidden">
             <GlowingBorder>
               <button
-                onClick={() => setNavbarOpen(!navbarOpen)}
-                className="flex items-center p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300"
+                onClick={() => {
+                  setNavbarOpen(!navbarOpen);
+                  playClickSound();
+                }}
+                className="flex items-center p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300 relative group"
+                onMouseEnter={playHoverSound}
               >
+                <PixelCorner position="top-0 left-0" />
+                <PixelCorner position="top-0 right-0" />
+                <PixelCorner position="bottom-0 left-0" />
+                <PixelCorner position="bottom-0 right-0" />
                 <div className="space-y-2">
                   <motion.span
                     animate={navbarOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
