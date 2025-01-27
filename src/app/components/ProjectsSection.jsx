@@ -67,13 +67,13 @@ const projectsData = [
   },
   {
     id: 7,
-    title: "MiccsJoyce SmartGadgets",
-    description: "E-commerce platform for smart gadgets and innovative devices. Features product catalog, shopping cart, and secure payment integration.",
+    title: "Truck Logistics System",
+    description: "next-generation logistics management system with real-time tracking, route optimization, and automated dispatching capabilities.",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/miccx-24/MiccsJoyce_SmartGadgets",
-    previewUrl: "https://miccsjoyce-smartgadgets.vercel.app/",
-    technologies: ["JavaScript", "React", "Node.js", "E-commerce"]
+    gitUrl: "https://github.com/sairosthedev/logistics.git",
+    previewUrl: "https://sairos-logistics.vercel.app",
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB"]
   }
 ];
 
