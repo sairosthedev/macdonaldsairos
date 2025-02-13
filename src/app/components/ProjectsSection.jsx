@@ -49,8 +49,8 @@ const projectsData = [
     id: 5,
     title: "Restaurant Management",
     description: "Full-stack restaurant management system with order processing, inventory tracking, and kitchen management features.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-    tag: ["All", "Enterprise"],
+    image: "/images/projects/1.png",
+    tag: ["All", "Enterprise", "Web"],
     gitUrl: "https://github.com/miccx-24/RESTAURANT",
     previewUrl: "https://restaurant-sairos.vercel.app",
     technologies: ["React + Vite", "Node.js", "MongoDB", "RESTful API"]
