@@ -37,13 +37,13 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Boarding House System",
-    description: "Comprehensive boarding house management system with room booking, tenant management, and billing features.",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-    tag: ["All", "Enterprise"],
-    gitUrl: "https://github.com/miccx-24/boarding_house.git",
-    previewUrl: "https://boarding-house-ruddy.vercel.app/",
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"]
+    title: "Pamusha Student Boarding House System",
+    description: "Comprehensive boarding house management system with room booking, student management, and billing features.",
+    image: "pamusha.png",
+    tag: ["All", "Enterprise", "Web"],
+    gitUrl: "https://github.com/sairosthedev/student-accommodation.git",
+    previewUrl: "https://student-accommodation-five.vercel.app/student/dashboard",
+    technologies: ["React", "Vite","Node.js", "MongoDB", "Tailwind CSS","shadcn","Framer Motion","chakra-ui","carousal"]
   },
   {
     id: 5,
