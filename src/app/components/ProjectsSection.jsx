@@ -39,10 +39,10 @@ const projectsData = [
     id: 4,
     title: "Pamusha Student Boarding House System",
     description: "Comprehensive boarding house management system with room booking, student management, and billing features.",
-    image: "pamusha.png",
+    image: "/images/projects/pamusha.png",  
     tag: ["All", "Enterprise", "Web"],
     gitUrl: "https://github.com/sairosthedev/student-accommodation.git",
-    previewUrl: "https://student-accommodation-five.vercel.app/student/dashboard",
+    previewUrl: "https://student-accommodation-five.vercel.app",
     technologies: ["React", "Vite","Node.js", "MongoDB", "Tailwind CSS","shadcn","Framer Motion","chakra-ui","carousal"]
   },
   {
