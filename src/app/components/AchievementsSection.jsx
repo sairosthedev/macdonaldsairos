@@ -18,13 +18,13 @@ const achievementsList = [
   },
   {
     prefix: "~",
-    metric: "Users",
-    value: "100000",
-    description: "Active Users"
+    metric: "Clients",
+    value: "100",
+    description: "Active Clients"
   },
   {
     metric: "Certificates",
-    value: "14",
+    value: "17",
     description: "Professional Certifications"
   },
   {

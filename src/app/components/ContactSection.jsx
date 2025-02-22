@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",

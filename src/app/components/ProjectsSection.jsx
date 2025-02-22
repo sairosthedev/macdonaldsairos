@@ -72,7 +72,7 @@ const projectsData = [
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sairosthedev/logistics.git",
-    previewUrl: "https://sairos-logistics.vercel.app",
+    previewUrl: "https://www.truckstophub.com",
     technologies: ["JavaScript", "React", "Node.js", "MongoDB"]
   }
 ];

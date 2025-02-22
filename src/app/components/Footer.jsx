@@ -263,7 +263,7 @@ const Footer = () => {
                   }}
                 />
               </motion.span>
-              <span className="font-press-start">by MS</span>
+              <span className="font-press-start">by Miccs Technologies</span>
             </motion.div>
           </div>
         </motion.div>

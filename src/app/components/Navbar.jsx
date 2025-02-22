@@ -212,7 +212,7 @@ const Navbar = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300 relative group"
+                    className="p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#2a2a2a] transition-colors duration-300 relative group flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     onMouseEnter={playHoverSound}
@@ -227,7 +227,8 @@ const Navbar = () => {
                       alt={link.title}
                       width={20}
                       height={20}
-                      className="filter invert"
+                      className="w-5 h-5 brightness-0 invert"
+                      priority
                     />
                   </motion.a>
                 </GlowingBorder>
