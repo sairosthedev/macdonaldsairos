@@ -74,6 +74,46 @@ const projectsData = [
     gitUrl: "https://github.com/sairosthedev/logistics.git",
     previewUrl: "https://www.truckstophub.com",
     technologies: ["JavaScript", "React", "Node.js", "MongoDB"]
+  },
+  {
+    id:7,
+    title: "Alamait Property Management System",
+    description: "Alamait Property Management System is a comprehensive property management system that allows you to manage your properties and tenants.",
+    image: "/images/alamait.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/alamait.git",
+    previewUrl: "https://alamait.vercel.app/",
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+  },
+  {
+    id: 8,
+    title: "Mbare Mkambo Market Management System",
+    description: "Mbare Mkambo Market Management System is a comprehensive market management system that allows you to manage your market and vendors.",
+    image: "/images/mbare.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/mbare.git",
+    previewUrl: "http://20.116.222.250/",
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+  },
+  {
+    id: 9,
+    title:"Starlink Portal",
+    description: "Starlink Portal is a comprehensive portal that allows you to manage starlink orders and customers.",
+    image: "/images/aura.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/starlink.git",
+    previewUrl: "https://starlink.auragrp.com/",
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+  },
+  {
+    id: 10,
+    title: "Drought Monitoring System",
+    description: "A comprehensive drought monitoring application built with Next.js and Neon Database for tracking drought conditions using satellite data, rainfall data, and drought indices.",
+    image: "/images/drought.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/drought.git",
+    previewUrl: "https://v0-nasa-api-drought-app.vercel.app/",
+    technologies: ["Typescript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
   }
 ];
 
