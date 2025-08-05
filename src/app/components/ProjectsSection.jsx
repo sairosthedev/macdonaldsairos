@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView, useAnimation } from "framer-motion";
+import ProjectStructuredData from "./ProjectStructuredData";
 
 const projectsData = [
   {
@@ -114,6 +115,106 @@ const projectsData = [
     gitUrl: "https://github.com/sairosthedev/drought.git",
     previewUrl: "https://v0-nasa-api-drought-app.vercel.app/",
     technologies: ["Typescript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+  },
+  {
+    id: 11,
+    title: "AI-Powered Task Manager",
+    description: "Intelligent task management application with AI-driven prioritization, smart scheduling, and productivity analytics. Features natural language processing for task creation.",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
+    tag: ["All", "Web", "AI"],
+    gitUrl: "https://github.com/sairosthedev/ai-task-manager",
+    previewUrl: "https://ai-task-manager.vercel.app/",
+    technologies: ["Next.js", "OpenAI API", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"]
+  },
+  {
+    id: 12,
+    title: "Real-Time Chat Application",
+    description: "Modern real-time messaging platform with end-to-end encryption, file sharing, and group chat capabilities. Built with WebSocket technology for instant communication.",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/realtime-chat",
+    previewUrl: "https://realtime-chat-app.vercel.app/",
+    technologies: ["React", "Socket.io", "Node.js", "MongoDB", "JWT", "Tailwind CSS"]
+  },
+  {
+    id: 13,
+    title: "E-Learning Platform",
+    description: "Comprehensive online learning management system with video streaming, progress tracking, quizzes, and certificate generation. Supports multiple user roles and course management.",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
+    tag: ["All", "Enterprise", "Web"],
+    gitUrl: "https://github.com/sairosthedev/elearning-platform",
+    previewUrl: "https://elearning-platform.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AWS S3", "Stripe"]
+  },
+  {
+    id: 14,
+    title: "Weather Dashboard",
+    description: "Advanced weather application with 7-day forecasts, radar maps, and location-based weather alerts. Integrates multiple weather APIs for comprehensive data.",
+    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/sairosthedev/weather-dashboard",
+    previewUrl: "https://weather-dashboard-sairos.vercel.app/",
+    technologies: ["React", "TypeScript", "OpenWeather API", "Chart.js", "Geolocation API"]
+  },
+  {
+    id: 15,
+    title: "Inventory Management System",
+    description: "Full-featured inventory tracking system with barcode scanning, low stock alerts, supplier management, and detailed reporting. Optimized for retail and warehouse operations.",
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c",
+    tag: ["All", "Enterprise", "Web"],
+    gitUrl: "https://github.com/sairosthedev/inventory-system",
+    previewUrl: "https://inventory-management.vercel.app/",
+    technologies: ["React", "Node.js", "MongoDB", "Barcode API", "Chart.js", "Express.js"]
+  },
+  {
+    id: 16,
+    title: "Social Media Analytics Dashboard",
+    description: "Comprehensive social media analytics platform that tracks engagement, follower growth, and content performance across multiple platforms with interactive visualizations.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    tag: ["All", "Web", "Analytics"],
+    gitUrl: "https://github.com/sairosthedev/social-analytics",
+    previewUrl: "https://social-analytics-dashboard.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "D3.js", "Social APIs", "Chart.js", "Tailwind CSS"]
+  },
+  {
+    id: 17,
+    title: "Event Management Platform",
+    description: "Complete event planning and management solution with ticket sales, attendee management, event scheduling, and real-time updates. Features QR code ticketing system.",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622",
+    tag: ["All", "Enterprise", "Web"],
+    gitUrl: "https://github.com/sairosthedev/event-management",
+    previewUrl: "https://event-management-platform.vercel.app/",
+    technologies: ["React", "Node.js", "MongoDB", "QR Code API", "Stripe", "Email API"]
+  },
+  {
+    id: 18,
+    title: "Personal Finance Tracker",
+    description: "Smart personal finance application with expense categorization, budget planning, investment tracking, and financial goal setting. Features AI-powered spending insights.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+    tag: ["All", "Web", "Finance"],
+    gitUrl: "https://github.com/sairosthedev/finance-tracker",
+    previewUrl: "https://personal-finance-tracker.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Chart.js", "AI Integration"]
+  },
+  {
+    id: 19,
+    title: "Healthcare Appointment System",
+    description: "Digital healthcare platform for appointment booking, patient records management, and telemedicine consultations. HIPAA-compliant with secure data handling.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f",
+    tag: ["All", "Enterprise", "Healthcare"],
+    gitUrl: "https://github.com/sairosthedev/healthcare-system",
+    previewUrl: "https://healthcare-appointments.vercel.app/",
+    technologies: ["React", "Node.js", "MongoDB", "WebRTC", "JWT", "HIPAA Compliance"]
+  },
+  {
+    id: 20,
+    title: "Recipe Management App",
+    description: "Interactive recipe application with meal planning, grocery list generation, nutritional information, and social sharing features. Includes recipe recommendations.",
+    image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352",
+    tag: ["All", "Web", "Lifestyle"],
+    gitUrl: "https://github.com/sairosthedev/recipe-app",
+    previewUrl: "https://recipe-management-app.vercel.app/",
+    technologies: ["React", "TypeScript", "Firebase", "Nutrition API", "Image Recognition", "PWA"]
   }
 ];
 
@@ -164,6 +265,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-20 px-4 bg-[#111111]">
+      <ProjectStructuredData projects={projectsData} />
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -187,7 +289,7 @@ const ProjectsSection = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-wrap gap-4 mb-12"
         >
-          {["All", "Enterprise", "Web"].map((tagName) => (
+          {["All", "Enterprise", "Web", "AI", "Analytics", "Finance", "Healthcare", "Lifestyle"].map((tagName) => (
             <ProjectTag
               key={tagName}
               onClick={handleTagChange}
