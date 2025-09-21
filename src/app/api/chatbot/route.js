@@ -1,10 +1,17 @@
 import { NextResponse } from 'next/server';
-import OpenAI from 'openai';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client conditionally
+let openai = null;
+if (process.env.OPENAI_API_KEY) {
+  try {
+    const OpenAI = require('openai').default;
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  } catch (error) {
+    console.error('Failed to initialize OpenAI:', error);
+  }
+}
 
 // Comprehensive knowledge base about Macdonald Sairos
 const macdonaldKnowledgeBase = `
@@ -115,9 +122,9 @@ export async function POST(request) {
       );
     }
 
-    // Check if OpenAI API key is available
-    if (!process.env.OPENAI_API_KEY) {
-      console.log('OpenAI API key not found, using fallback responses');
+    // Check if OpenAI client is available
+    if (!openai || !process.env.OPENAI_API_KEY) {
+      console.log('OpenAI client not available, using fallback responses');
       return NextResponse.json(
         { 
           response: "I'm currently offline, but I can still help! Macdonald is a Full Stack Developer specializing in React, Next.js, and modern web technologies. You can reach him at +263786033933 or visit his LinkedIn profile.",
