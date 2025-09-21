@@ -12,9 +12,7 @@ const nextConfig = {
   generateEtags: true,
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    optimizeCss: true,
-  },
+
   async headers() {
     return [
       {
