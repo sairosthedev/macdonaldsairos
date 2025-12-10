@@ -1,24 +1,16 @@
-import { Press_Start_2P, Orbitron, Russo_One } from 'next/font/google';
+import { Outfit, Inter } from 'next/font/google';
 import "./globals.css";
 import { seoConfig, generateStructuredData } from '../config/seo';
 
-const pressStart = Press_Start_2P({
-  weight: '400',
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-press-start',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
-const orbitron = Orbitron({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-orbitron',
-  display: 'swap',
-});
-
-const russoOne = Russo_One({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-russo',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -84,7 +76,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${pressStart.variable} ${orbitron.variable} ${russoOne.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
@@ -94,16 +86,16 @@ export default function RootLayout({ children }) {
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
-        
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://images.unsplash.com" />
-        
+
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//images.unsplash.com" />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"

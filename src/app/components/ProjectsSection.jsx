@@ -40,11 +40,11 @@ const projectsData = [
     id: 4,
     title: "Pamusha Student Boarding House System",
     description: "Comprehensive boarding house management system with room booking, student management, and billing features.",
-    image: "/images/projects/pamusha.png",  
+    image: "/images/projects/pamusha.png",
     tag: ["All", "Enterprise", "Web"],
     gitUrl: "https://github.com/sairosthedev/student-accommodation.git",
     previewUrl: "https://student-accommodation-five.vercel.app",
-    technologies: ["React", "Vite","Node.js", "MongoDB", "Tailwind CSS","shadcn","Framer Motion","chakra-ui","carousal"]
+    technologies: ["React", "Vite", "Node.js", "MongoDB", "Tailwind CSS", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
   },
   {
     id: 5,
@@ -77,14 +77,14 @@ const projectsData = [
     technologies: ["JavaScript", "React", "Node.js", "MongoDB"]
   },
   {
-    id:7,
+    id: 7,
     title: "Alamait Property Management System",
     description: "Alamait Property Management System is a comprehensive property management system that allows you to manage your properties and tenants.",
     image: "/images/alamait.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sairosthedev/alamait.git",
     previewUrl: "https://alamait.vercel.app/",
-    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
   },
   {
     id: 8,
@@ -94,17 +94,17 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sairosthedev/mbare.git",
     previewUrl: "http://20.116.222.250/",
-    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
   },
   {
     id: 9,
-    title:"Starlink Portal",
+    title: "Starlink Portal",
     description: "Starlink Portal is a comprehensive portal that allows you to manage starlink orders and customers.",
     image: "/images/aura.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sairosthedev/starlink.git",
     previewUrl: "https://starlink.auragrp.com/",
-    technologies: ["JavaScript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+    technologies: ["JavaScript", "React", "Node.js", "MongoDB", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
   },
   {
     id: 10,
@@ -114,7 +114,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sairosthedev/drought.git",
     previewUrl: "https://v0-nasa-api-drought-app.vercel.app/",
-    technologies: ["Typescript", "React", "Node.js", "MongoDB","shadcn","Framer Motion","chakra-ui","carousal"]
+    technologies: ["Typescript", "React", "Node.js", "MongoDB", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
   },
   {
     id: 11,
@@ -207,6 +207,36 @@ const projectsData = [
     technologies: ["React", "Node.js", "MongoDB", "WebRTC", "JWT", "HIPAA Compliance"]
   },
   {
+    id: 21,
+    title: "UZ SDA Zunde Registration & Check-in",
+    description: "Event registration and QR-coded check-in system tailored for UZ SDA Association Zunde outreach events with real-time tracking and analytics.",
+    image: "https://images.unsplash.com/photo-1515165562835-c3b8c2ce1130",
+    tag: ["All", "Enterprise", "Web"],
+    gitUrl: "#",
+    previewUrl: "https://zunde-registration.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "QR Codes", "Email/SMS", "Realtime Tracking"]
+  },
+  {
+    id: 22,
+    title: "TruthLens - AI Filter Detection",
+    description: "Advanced AI-powered filter detection and removal tool to combat photo manipulation and dating scams. Privacy-protected, instant on-device results.",
+    image: "https://images.unsplash.com/photo-1520975916090-3105956dac38",
+    tag: ["All", "Web", "AI"],
+    gitUrl: "#",
+    previewUrl: "https://truthlens-yauya.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "AI/ML", "Image Processing", "Privacy-first"]
+  },
+  {
+    id: 23,
+    title: "Zimbabwe Visitor Health Insurance",
+    description: "Secure, comprehensive health coverage for international visitors. Instant purchase, digital certificates, and 24/7 support.",
+    image: "https://images.unsplash.com/photo-1587351021744-554886e8e5d9",
+    tag: ["All", "Web", "Finance", "Healthcare"],
+    gitUrl: "#",
+    previewUrl: "https://tourism-zim.vercel.app/",
+    technologies: ["Next.js", "Tailwind CSS", "Stripe", "PDF Certificates", "i18n"]
+  },
+  {
     id: 20,
     title: "Recipe Management App",
     description: "Interactive recipe application with meal planning, grocery list generation, nutritional information, and social sharing features. Includes recipe recommendations.",
@@ -252,8 +282,8 @@ const ProjectsSection = () => {
 
   const cardVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: {
         type: "spring",
@@ -264,26 +294,30 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-[#111111]">
+    <section id="projects" className="py-20 px-4 relative">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-900/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
       <ProjectStructuredData projects={projectsData} />
-      <div className="max-w-6xl mx-auto">
-        <motion.div 
+      <div className="max-w-7xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-start gap-4 mb-16"
+          className="flex flex-col items-center text-center gap-4 mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Recent Projects
+          <div className="inline-block px-3 py-1 rounded-full bg-secondary-500/10 border border-secondary-500/20 text-secondary-400 text-xs font-semibold uppercase tracking-wider">
+            Portfolio
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-white">
+            Featured Projects
           </h2>
-          <div className="h-1 w-20 bg-blue-500 rounded-full mt-2"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mt-4 leading-relaxed">
-            A collection of projects showcasing my expertise in software development, 
-            from enterprise solutions to innovative web applications.
+          <p className="text-slate-400 text-lg max-w-2xl mt-4 leading-relaxed">
+            A selection of my recent work in software development,
+            showcasing enterprise solutions and innovative web applications.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -299,7 +333,7 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
 
-        <motion.ul 
+        <motion.ul
           ref={ref}
           variants={containerVariants}
           initial="hidden"
@@ -312,11 +346,10 @@ const ProjectsSection = () => {
               variants={cardVariants}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
-              className={`transform transition-all duration-300 ${
-                hoveredIndex === index 
-                  ? 'scale-[1.02] z-10' 
+              className={`transform transition-all duration-300 ${hoveredIndex === index
+                  ? 'scale-[1.02] z-10'
                   : 'scale-100 z-0'
-              }`}
+                }`}
             >
               <ProjectCard
                 key={project.id}

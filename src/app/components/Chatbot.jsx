@@ -59,6 +59,26 @@ const Chatbot = () => {
         "He's proficient in modern web development technologies including React ecosystem, server-side development, database management, and cloud deployment.",
         "Macdonald specializes in full-stack development with a focus on creating responsive, performant web applications."
       ],
+      projects: [
+        "Macdonald has worked on various projects including:\n• Modern web applications with React and Next.js\n• E-commerce platforms\n• Business solutions and dashboards\n• Mobile-responsive designs\n• Performance-optimized applications\n\nYou can see more details on his portfolio or GitHub: github.com/sairosthedev",
+        "Macdonald's projects showcase his expertise in full-stack development, with a focus on user experience and modern design patterns. He's worked on everything from simple websites to complex web applications.",
+        "Macdonald has built numerous projects demonstrating his skills in React, Next.js, and modern web technologies. Check out his GitHub profile for code examples and project details!"
+      ],
+      work: [
+        "Macdonald works as a Full Stack Developer at Miccs Technologies, where he creates innovative digital solutions. He specializes in building user-friendly web applications using modern technologies like React, Next.js, and Node.js.",
+        "Macdonald is a professional developer who creates web applications, APIs, and digital solutions. He's passionate about clean code, user experience, and staying up-to-date with the latest web technologies.",
+        "Macdonald's work involves developing full-stack web applications, designing user interfaces, and implementing backend solutions. He's experienced in both frontend and backend development."
+      ],
+      experience: [
+        "Macdonald has extensive experience in:\n• Full Stack Web Development\n• React and Next.js applications\n• Node.js backend development\n• Database design and management\n• UI/UX design\n• Cloud deployment and DevOps\n\nHe's worked on various client projects and continues to expand his skills.",
+        "Macdonald brings years of experience in modern web development, with expertise spanning the entire development stack from frontend to backend and deployment.",
+        "With experience in both frontend and backend development, Macdonald has worked on diverse projects ranging from simple websites to complex web applications."
+      ],
+      age: [
+        "I don't have specific personal information like age, but I can tell you about Macdonald's professional experience and skills! He's a skilled Full Stack Developer with expertise in modern web technologies.",
+        "Macdonald's professional experience and skills are what matter most! He's a talented developer with extensive experience in React, Next.js, and full-stack development.",
+        "While I don't have personal details like age, I can share that Macdonald is an experienced Full Stack Developer passionate about creating innovative web solutions."
+      ],
       contact: [
         "You can reach Macdonald through:\n• WhatsApp: +263786033933\n• LinkedIn: linkedin.com/in/macdonald-sairos-8b1686186\n• GitHub: github.com/sairosthedev\n• Email: macdonaldsairos@gmail.com",
         "Macdonald is always open to discussing new opportunities and collaborations. Feel free to reach out through any of his social channels!",
@@ -79,14 +99,22 @@ const Chatbot = () => {
       return fallbackResponses.about[Math.floor(Math.random() * fallbackResponses.about.length)];
     } else if (message.includes('skill') || message.includes('technology') || message.includes('tech')) {
       return fallbackResponses.skills[Math.floor(Math.random() * fallbackResponses.skills.length)];
-    } else if (message.includes('contact') || message.includes('reach') || message.includes('connect')) {
+    } else if (message.includes('project') || message.includes('portfolio') || message.includes('work')) {
+      return fallbackResponses.projects[Math.floor(Math.random() * fallbackResponses.projects.length)];
+    } else if (message.includes('work') || message.includes('job') || message.includes('career')) {
+      return fallbackResponses.work[Math.floor(Math.random() * fallbackResponses.work.length)];
+    } else if (message.includes('experience') || message.includes('background') || message.includes('history')) {
+      return fallbackResponses.experience[Math.floor(Math.random() * fallbackResponses.experience.length)];
+    } else if (message.includes('age') || message.includes('old') || message.includes('birthday')) {
+      return fallbackResponses.age[Math.floor(Math.random() * fallbackResponses.age.length)];
+    } else if (message.includes('contact') || message.includes('reach') || message.includes('connect') || message.includes('phone') || message.includes('email')) {
       return fallbackResponses.contact[Math.floor(Math.random() * fallbackResponses.contact.length)];
     } else {
       return fallbackResponses.default[Math.floor(Math.random() * fallbackResponses.default.length)];
     }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage = {
@@ -101,8 +129,36 @@ const Chatbot = () => {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate typing delay and get response
-    setTimeout(() => {
+    try {
+      // Call the chatbot API
+      const response = await fetch('/api/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: currentInput,
+          conversationHistory: messages
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        const botResponse = {
+          id: Date.now() + 1,
+          text: data.response,
+          sender: "bot",
+          timestamp: new Date(),
+        };
+        
+        setMessages(prev => [...prev, botResponse]);
+      } else {
+        throw new Error(data.error || 'Failed to get response');
+      }
+    } catch (error) {
+      console.error('Chatbot error:', error);
+      // Fallback to local response if API fails
       const botResponseText = getBotResponse(currentInput, messages);
       
       const botResponse = {
@@ -113,8 +169,9 @@ const Chatbot = () => {
       };
       
       setMessages(prev => [...prev, botResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000);
+    }
   };
 
   const handleKeyPress = (e) => {

@@ -6,215 +6,112 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="lg:py-20 min-h-screen flex items-center">
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="col-span-7 place-self-center text-center sm:text-left justify-self-start"
-        >
-          {/* Greeting */}
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Aurora Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="aurora-blob blob-1"></div>
+        <div className="aurora-blob blob-2"></div>
+        <div className="aurora-blob blob-3"></div>
+      </div>
+
+      <div className="container mx-auto px-6 z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+
+          {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-4"
+            transition={{ duration: 0.8 }}
+            className="flex-1 text-center lg:text-left"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-lg sm:text-xl font-medium">
-              👋 Hello, I'm
-            </span>
-          </motion.div>
-
-          {/* Main Title */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-russo mb-6 text-4xl sm:text-5xl lg:text-7xl lg:leading-tight font-extrabold"
-          >
-            <span className="text-white">
-              Macdonald
-            </span>
-            <br />
-            <TypeAnimation
-              sequence={[
-                "Full Stack Developer",
-                2000,
-                "Mobile Developer", 
-                2000,
-                "UI/UX Designer",
-                2000,
-                "Problem Solver",
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              className="font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600"
-            />
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-[#ADB7BE] text-base sm:text-lg mb-8 lg:text-xl leading-relaxed max-w-2xl"
-          >
-            Crafting digital experiences that blend innovation with functionality. 
-            Specializing in modern web applications, mobile solutions, and user-centered design.
-          </motion.p>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-wrap gap-6 mb-8 text-sm"
-          >
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              <span className="text-gray-400">Available for projects</span>
+            <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 backdrop-blur-sm">
+              <span className="text-secondary-400 font-medium text-sm">Validating Ideas & Building Products</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-purple-400 font-semibold">20+</span>
-              <span className="text-gray-400">Projects completed</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-blue-400 font-semibold">3+</span>
-              <span className="text-gray-400">Years experience</span>
-            </div>
-          </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Link
-              href="#contact"
-              className="group relative px-8 py-4 w-full sm:w-fit rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
-            >
-              <span className="relative z-10">Get In Touch</span>
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
-            </Link>
-            <Link
-              href="#projects"
-              className="group px-8 py-4 w-full sm:w-fit rounded-full border-2 border-purple-500/30 hover:border-purple-500 text-white font-semibold transition-all duration-300 hover:scale-105 hover:bg-purple-500/10"
-            >
-              <span className="flex items-center justify-center gap-2">
-                View My Work
-                <motion.svg 
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </motion.svg>
+            <h1 className="text-5xl lg:text-7xl font-bold font-heading mb-6 tracking-tight">
+              <span className="text-white">Building the </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-500">
+                Digital Future
               </span>
-            </Link>
-          </motion.div>
-        </motion.div>
+            </h1>
 
-        {/* Animated Visual */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="col-span-5 place-self-center mt-8 lg:mt-0"
-        >
-          <div className="relative w-[300px] h-[300px] lg:w-[400px] lg:h-[400px]">
-            {/* Outer Ring */}
-            <motion.div
-              className="absolute inset-0 rounded-full border-4 border-purple-500/20"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            />
-            
-            {/* Middle Ring */}
-            <motion.div
-              className="absolute inset-8 rounded-full border-4 border-pink-500/20"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            
-            {/* Inner Ring */}
-            <motion.div
-              className="absolute inset-16 rounded-full border-4 border-blue-500/20"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            />
-
-            {/* Central Element */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="w-40 h-40 lg:w-48 lg:h-48 relative"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-600/30 clip-hex transform hover:scale-105 transition-transform duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="text-4xl lg:text-5xl font-press-start text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    MS
-                  </motion.div>
-                </div>
-              </motion.div>
+            <div className="text-xl lg:text-2xl text-slate-400 mb-8 h-[60px]">
+              <span className="mr-2">I am a</span>
+              <TypeAnimation
+                sequence={[
+                  "Full Stack Developer",
+                  2000,
+                  "UI/UX Systems Architect",
+                  2000,
+                  "Mobile Solutions Expert",
+                  2000
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+                className="text-white font-semibold"
+              />
             </div>
 
-            {/* Floating Particles */}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 shadow-lg"
-                initial={{ scale: 0, x: "50%", y: "50%" }}
-                animate={{
-                  scale: [0, 1, 0],
-                  x: ["50%", `${Math.random() * 100}%`],
-                  y: ["50%", `${Math.random() * 100}%`],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: i * 0.3,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
+            <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-sans">
+              I transform complex requirements into scalable, high-performance digital solutions.
+              Specializing in modern web architectures and intuitive user experiences.
+            </p>
 
-            {/* Tech Stack Icons */}
-            {['⚛️', '🚀', '💻', '🎨', '📱', '☁️'].map((icon, i) => (
-              <motion.div
-                key={i}
-                className="absolute text-2xl"
-                style={{
-                  left: `${50 + 35 * Math.cos(i * Math.PI / 3)}%`,
-                  top: `${50 + 35 * Math.sin(i * Math.PI / 3)}%`,
-                }}
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity, delay: i * 0.5 },
-                }}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                href="#contact"
+                className="px-8 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
               >
-                {icon}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                Hire Me
+              </Link>
+              <Link
+                href="#projects"
+                className="px-8 py-4 rounded-full bg-slate-900/50 text-white border border-slate-700 hover:bg-slate-800 transition-all backdrop-blur-md"
+              >
+                View Portfolio
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Abstract Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex-1 relative w-full max-w-[500px] aspect-square"
+          >
+            {/* Glassmorph Card Visual */}
+            <div className="relative w-full h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-full blur-[100px] animate-pulse"></div>
+
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] glass-card rounded-2xl border border-slate-700/50 p-8 transform rotate-6 hover:rotate-0 transition-all duration-700">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="space-y-4">
+                  <div className="h-4 w-3/4 bg-slate-700/50 rounded animate-pulse"></div>
+                  <div className="h-4 w-1/2 bg-slate-700/50 rounded animate-pulse"></div>
+                  <div className="h-32 w-full bg-slate-800/50 rounded mt-8 border border-slate-700/30"></div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-10 -right-10 w-[60%] h-[60%] glass-card rounded-2xl border border-slate-700/50 p-6 transform -rotate-3 hover:rotate-0 transition-all duration-700 -z-10">
+                <div className="flex justify-between items-center mb-6">
+                  <div className="w-10 h-10 rounded-full bg-primary-500/20"></div>
+                  <div className="w-20 h-2 bg-slate-700/50 rounded"></div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="h-20 bg-slate-800/50 rounded-lg"></div>
+                  <div className="h-20 bg-slate-800/50 rounded-lg"></div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
