@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const MenuOverlay = ({ links }) => {
+const MenuOverlay = ({ links, closeNavbar }) => {
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     show: {
@@ -33,6 +33,7 @@ const MenuOverlay = ({ links }) => {
           <motion.div key={index} variants={itemVariants}>
             <Link
               href={link.path}
+              onClick={closeNavbar}
               className="text-2xl font-bold text-slate-300 hover:text-white transition-colors tracking-tight font-heading"
             >
               {link.title}

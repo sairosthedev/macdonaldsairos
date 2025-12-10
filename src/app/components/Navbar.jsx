@@ -71,7 +71,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="md:hidden p-2 text-slate-300 hover:text-white"
+            className="md:hidden p-2 text-slate-300 hover:text-white relative z-50"
           >
             <div className="w-6 h-6 flex flex-col justify-center gap-1.5 align-end">
               <motion.span
@@ -94,7 +94,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {navbarOpen && (
-          <MenuOverlay links={navLinks} />
+          <MenuOverlay links={navLinks} closeNavbar={() => setNavbarOpen(false)} />
         )}
       </AnimatePresence>
     </motion.nav>

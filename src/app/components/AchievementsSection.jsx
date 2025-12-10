@@ -12,15 +12,15 @@ const AnimatedNumbers = dynamic(
 const achievementsList = [
   {
     metric: "Projects",
-    value: "5",
+    value: "20",
     postfix: "+",
-    description: "Completed Projects"
+    description: "Delivered Solutions"
   },
   {
     prefix: "~",
-    metric: "Clients",
+    metric: "Users",
     value: "100",
-    description: "Active Clients"
+    description: "Happy Users"
   },
   {
     metric: "Certificates",
@@ -44,12 +44,10 @@ const AchievementsSection = () => {
   return (
     <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
       <div className={`
-        border-[#33353F] border rounded-lg 
+        glass-card rounded-2xl
         py-8 px-8 sm:px-16 
         flex flex-col sm:flex-row items-center justify-between
-        bg-gradient-to-r from-transparent via-[#2A2B32]/10 to-transparent
         transform transition-all duration-500 ease-in-out
-        hover:scale-[1.02] hover:border-[#4A4B50]
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
       `}>
         {achievementsList.map((achievement, index) => {
@@ -58,14 +56,14 @@ const AchievementsSection = () => {
               key={index}
               className="flex flex-col items-center justify-center mx-4 my-4 sm:my-0 group"
             >
-              <h2 className="text-white text-4xl font-bold flex flex-row items-center
-                           transform transition-all duration-300 group-hover:scale-110">
+              <h2 className="text-white text-4xl font-bold font-heading flex flex-row items-center
+                           transform transition-all duration-300 group-hover:scale-110 group-hover:text-primary-400">
                 {achievement.prefix}
                 <AnimatedNumbers
                   includeComma
                   animateToNumber={parseInt(achievement.value)}
                   locale="en-US"
-                  className="text-white text-4xl font-bold"
+                  className="text-white text-4xl font-bold font-heading group-hover:text-primary-400 transition-colors"
                   configs={[
                     { mass: 1, tension: 220, friction: 40 },
                     { mass: 1, tension: 180, friction: 40 },
@@ -74,12 +72,12 @@ const AchievementsSection = () => {
                 />
                 {achievement.postfix}
               </h2>
-              <p className="text-[#ADB7BE] text-base mt-2 text-center
+              <p className="text-slate-400 text-base mt-2 text-center font-medium
                           transition-colors duration-300 group-hover:text-white">
                 {achievement.metric}
               </p>
-              <p className="text-[#ADB7BE] text-xs mt-1 opacity-0 group-hover:opacity-70
-                          transition-all duration-300">
+              <p className="text-primary-300 text-xs mt-1 opacity-0 group-hover:opacity-100
+                          transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                 {achievement.description}
               </p>
             </div>

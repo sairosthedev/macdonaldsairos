@@ -2,7 +2,9 @@ import Image from "next/image";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import AboutSection from "./components/AboutSection";
+import AchievementsSection from "./components/AchievementsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import ProjectShowcaseMarquee from "./components/ProjectShowcaseMarquee";
 import Footer from "./components/Footer";
 import ContactSection from "./components/ContactSection";
 import ScrollToTop from "./components/ScrollToTop";
@@ -20,6 +22,8 @@ export default function Home() {
         <ProjectsSection />
         <ContactSection />
       </div>
+
+      <ProjectShowcaseMarquee />
 
       <Footer />
       <ScrollToTop />
