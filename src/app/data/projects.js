@@ -238,5 +238,15 @@ export const projectsData = [
         gitUrl: "https://github.com/sairosthedev/recipe-app",
         previewUrl: "https://recipe-management-app.vercel.app/",
         technologies: ["React", "TypeScript", "Firebase", "Nutrition API", "Image Recognition", "PWA"]
+    },
+    {
+        id: 24,
+        title: "BELCIT Trading Supermarket System",
+        description: "Enterprise supermarket management suite with a Next.js customer portal and Java-powered POS for in-store checkout, inventory, and reporting.",
+        image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+        tag: ["All", "Enterprise", "Web"],
+        gitUrl: "#",
+        previewUrl: "https://belcit-frontend.vercel.app/",
+        technologies: ["Next.js", "Tailwind CSS", "Java", "POS Integration", "REST APIs"]
     }
 ];
