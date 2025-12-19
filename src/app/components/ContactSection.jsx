@@ -72,7 +72,7 @@ const ContactSection = () => {
                   <div>
                     <p className="text-sm text-slate-400">Email</p>
                     <Link href="mailto:macdonaldsairos@gmail.com" className="text-white hover:text-primary-400 transition-colors">
-                      macdonaldsairos@gmail.com
+                      macdonaldsairos01@gmail.com
                     </Link>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-white transition-all placeholder:text-slate-600"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                 </div>
                 <div>
@@ -141,7 +141,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-white transition-all placeholder:text-slate-600"
-                    placeholder="john@example.com"
+                    placeholder="Your Email"
                   />
                 </div>
               </div>
@@ -155,7 +155,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-white transition-all placeholder:text-slate-600"
-                  placeholder="Project Inquiry"
+                  placeholder="Subject"
                 />
               </div>
 
@@ -168,7 +168,7 @@ const ContactSection = () => {
                   required
                   rows={4}
                   className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-white resize-none transition-all placeholder:text-slate-600"
-                  placeholder="Tell me about your project..."
+                  placeholder="Your Message"
                 />
               </div>
 
