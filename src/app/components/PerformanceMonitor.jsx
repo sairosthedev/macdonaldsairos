@@ -46,7 +46,7 @@ const PerformanceMonitor = () => {
           }
         });
       });
-      clsObserver.observe({ entryTypes: ['layout-shift'] });
+      clsObserver.observe({ entryTypes: ['layout-shift'] }); // Monitor Cumulative Layout Shift (CLS)
 
       // Monitor Time to First Byte (TTFB)
       const navigationObserver = new PerformanceObserver((list) => {
@@ -74,7 +74,7 @@ const PerformanceMonitor = () => {
     }
   }, []);
 
-  return null; // This component doesn't render anything
+  return null; // This component doesn't render anything 
 };
 
 export default PerformanceMonitor; 

@@ -19,12 +19,19 @@ const ContactSection = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+    // Format the message for WhatsApp
+    const whatsappMessage = `*New Contact Message*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}`;
+    
+    // WhatsApp phone number (without + sign for wa.me)
+    const phoneNumber = "263786033933";
+    
+    // Open WhatsApp with the pre-filled message
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+    window.open(whatsappUrl, '_blank');
+
+    setIsSubmitting(false);
+    setSubmitStatus('success');
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleChange = (e) => {
@@ -168,7 +175,7 @@ const ContactSection = () => {
                   required
                   rows={4}
                   className="w-full px-4 py-3 bg-slate-950/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-white resize-none transition-all placeholder:text-slate-600"
-                  placeholder="Your Message"
+                  placeholder="Your Message goes here"
                 />
               </div>
 

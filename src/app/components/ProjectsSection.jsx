@@ -68,7 +68,7 @@ const ProjectsSection = () => {
             Portfolio
           </div>
           <h2 className="text-4xl md:text-5xl font-bold font-heading text-white">
-            Featured Projects
+            Featured Projects 
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mt-4 leading-relaxed">
             A selection of my recent work in software development,
@@ -124,7 +124,7 @@ const ProjectsSection = () => {
         </motion.ul>
       </div>
     </section>
-  );
+  ); 
 };
 
 export default ProjectsSection;

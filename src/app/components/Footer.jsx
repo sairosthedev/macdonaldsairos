@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-          <p>&copy; {currentYear} Macdonald Sairos. All rights reserved.</p>
+          <p>&copy; {currentYear} Macdonald Sairos. All rights reserved. </p>
           <p className="mt-2 md:mt-0 flex items-center gap-1">
             Built with <span className="text-red-500">♥</span> using Next.js & Tailwind
           </p>
