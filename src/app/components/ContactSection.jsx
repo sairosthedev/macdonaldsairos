@@ -102,7 +102,7 @@ const ContactSection = () => {
                 <div className="flex gap-4">
                   {[
                     { icon: FaGithub, url: "https://github.com/sairosthedev" },
-                    { icon: FaLinkedin, url: "https://linkedin.com/in/macdonald-sairos" },
+                    { icon: FaLinkedin, url: "https://www.linkedin.com/in/macdonald-sairos-8b1686186/" },
                     { icon: FaWhatsapp, url: "https://wa.me/263786033933" }
                   ].map((social, idx) => (
                     <Link
