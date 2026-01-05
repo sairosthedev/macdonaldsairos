@@ -120,7 +120,7 @@ const AboutSection = () => {
 
           <div className="flex gap-4 pt-4">
             <Link
-              href="/CV.pdf"
+              href="/Macdonald Sairos-Resume.pdf"
               target="_blank"
               className="px-6 py-3 rounded-full bg-primary-600 hover:bg-primary-500 text-white font-semibold transition-all shadow-lg shadow-primary-500/20"
             >
