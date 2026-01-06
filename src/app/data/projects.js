@@ -9,26 +9,26 @@ export const projectsData = [
         previewUrl: "https://candybucket.vercel.app/",
         technologies: ["React", "Tailwind CSS", "React Router", "Framer Motion"]
     },
-    {
-        id: 2,
-        title: "Mac-Fi Network Management",
-        description: "Advanced WiFi service management platform with integrated authentication, automated billing, and network monitoring capabilities.",
-        image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8",
-        tag: ["All", "Enterprise"],
-        gitUrl: "https://github.com/miccx-24/mac-fi.git",
-        previewUrl: "https://mac-wifi.vercel.app/",
-        technologies: ["Next.js", "Tailwind CSS", "JWT Auth", "Payment Gateway"]
-    },
-    {
-        id: 3,
-        title: "Online Bus Ticketing",
-        description: "Digital bus ticket booking platform with route management, seat selection, and automated booking confirmation.",
-        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957",
-        tag: ["All", "Web"],
-        gitUrl: "https://github.com/miccx-24/online-bus-ticket.git",
-        previewUrl: "https://mac-sairos-online-bus.vercel.app/",
-        technologies: ["React", "Node.js", "MongoDB", "Framer Motion"]
-    },
+    // {
+    //     id: 2,
+    //     title: "Mac-Fi Network Management",
+    //     description: "Advanced WiFi service management platform with integrated authentication, automated billing, and network monitoring capabilities.",
+    //     image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8",
+    //     tag: ["All", "Enterprise"],
+    //     gitUrl: "https://github.com/miccx-24/mac-fi.git",
+    //     previewUrl: "https://mac-wifi.vercel.app/",
+    //     technologies: ["Next.js", "Tailwind CSS", "JWT Auth", "Payment Gateway"]
+    // },
+    // {
+    //     id: 3,
+    //     title: "Online Bus Ticketing",
+    //     description: "Digital bus ticket booking platform with route management, seat selection, and automated booking confirmation.",
+    //     image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957",
+    //     tag: ["All", "Web"],
+    //     gitUrl: "https://github.com/miccx-24/online-bus-ticket.git",
+    //     previewUrl: "https://mac-sairos-online-bus.vercel.app/",
+    //     technologies: ["React", "Node.js", "MongoDB", "Framer Motion"]
+    // },
     {
         id: 4,
         title: "Pamusha Student Boarding House System",
@@ -58,16 +58,6 @@ export const projectsData = [
         gitUrl: "https://github.com/miccx-24/web-tec",
         previewUrl: "https://miccs-technologies.vercel.app/",
         technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
-    },
-    {
-        id: 7,
-        title: "Truck Logistics System",
-        description: "next-generation logistics management system with real-time tracking, route optimization, and automated dispatching capabilities.",
-        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-        tag: ["All", "Web"],
-        gitUrl: "https://github.com/sairosthedev/logistics.git",
-        previewUrl: "https://www.truckstophub.com",
-        technologies: ["JavaScript", "React", "Node.js", "MongoDB"]
     },
     {
         id: 7,
@@ -110,53 +100,13 @@ export const projectsData = [
         technologies: ["Typescript", "React", "Node.js", "MongoDB", "shadcn", "Framer Motion", "chakra-ui", "carousal"]
     },
     {
-        id: 11,
-        title: "AI-Powered Task Manager",
-        description: "Intelligent task management application with AI-driven prioritization, smart scheduling, and productivity analytics. Features natural language processing for task creation.",
-        image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
-        tag: ["All", "Web", "AI"],
-        gitUrl: "https://github.com/sairosthedev/ai-task-manager",
-        previewUrl: "https://ai-task-manager.vercel.app/",
-        technologies: ["Next.js", "OpenAI API", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"]
-    },
-    {
-        id: 12,
-        title: "Real-Time Chat Application",
-        description: "Modern real-time messaging platform with end-to-end encryption, file sharing, and group chat capabilities. Built with WebSocket technology for instant communication.",
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-        tag: ["All", "Web"],
-        gitUrl: "https://github.com/sairosthedev/realtime-chat",
-        previewUrl: "https://realtime-chat-app.vercel.app/",
-        technologies: ["React", "Socket.io", "Node.js", "MongoDB", "JWT", "Tailwind CSS"]
-    },
-    {
-        id: 13,
-        title: "E-Learning Platform",
-        description: "Comprehensive online learning management system with video streaming, progress tracking, quizzes, and certificate generation. Supports multiple user roles and course management.",
-        image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
-        tag: ["All", "Enterprise", "Web"],
-        gitUrl: "https://github.com/sairosthedev/elearning-platform",
-        previewUrl: "https://elearning-platform.vercel.app/",
-        technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AWS S3", "Stripe"]
-    },
-    {
-        id: 14,
-        title: "Weather Dashboard",
-        description: "Advanced weather application with 7-day forecasts, radar maps, and location-based weather alerts. Integrates multiple weather APIs for comprehensive data.",
-        image: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
-        tag: ["All", "Web"],
-        gitUrl: "https://github.com/sairosthedev/weather-dashboard",
-        previewUrl: "https://weather-dashboard-sairos.vercel.app/",
-        technologies: ["React", "TypeScript", "OpenWeather API", "Chart.js", "Geolocation API"]
-    },
-    {
         id: 15,
-        title: "Inventory Management System",
-        description: "Full-featured inventory tracking system with barcode scanning, low stock alerts, supplier management, and detailed reporting. Optimized for retail and warehouse operations.",
+        title: "Property Management System",
+        description: "Full-featured property management system with barcode scanning, low stock alerts, supplier management, and detailed reporting. Optimized for retail and warehouse operations.",
         image: "https://images.unsplash.com/photo-1553413077-190dd305871c",
         tag: ["All", "Enterprise", "Web"],
         gitUrl: "https://github.com/sairosthedev/inventory-system",
-        previewUrl: "https://inventory-management.vercel.app/",
+        previewUrl: "https://property-management-system-frontend-eight.vercel.app/",
         technologies: ["React", "Node.js", "MongoDB", "Barcode API", "Chart.js", "Express.js"]
     },
     {
@@ -171,12 +121,12 @@ export const projectsData = [
     },
     {
         id: 17,
-        title: "Event Management Platform",
+        title: "Event Management Platform loading ...",
         description: "Complete event planning and management solution with ticket sales, attendee management, event scheduling, and real-time updates. Features QR code ticketing system.",
         image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622",
         tag: ["All", "Enterprise", "Web"],
-        gitUrl: "https://github.com/sairosthedev/event-management",
-        previewUrl: "https://event-management-platform.vercel.app/",
+        gitUrl: "#",
+        previewUrl: "#",
         technologies: ["React", "Node.js", "MongoDB", "QR Code API", "Stripe", "Email API"]
     },
     {
@@ -188,16 +138,6 @@ export const projectsData = [
         gitUrl: "https://github.com/sairosthedev/finance-tracker",
         previewUrl: "https://personal-finance-tracker.vercel.app/",
         technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Chart.js", "AI Integration"]
-    },
-    {
-        id: 19,
-        title: "Healthcare Appointment System",
-        description: "Digital healthcare platform for appointment booking, patient records management, and telemedicine consultations. HIPAA-compliant with secure data handling.",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f",
-        tag: ["All", "Enterprise", "Healthcare"],
-        gitUrl: "https://github.com/sairosthedev/healthcare-system",
-        previewUrl: "https://healthcare-appointments.vercel.app/",
-        technologies: ["React", "Node.js", "MongoDB", "WebRTC", "JWT", "HIPAA Compliance"]
     },
     {
         id: 21,
@@ -230,16 +170,6 @@ export const projectsData = [
         technologies: ["Next.js", "Tailwind CSS", "Stripe", "PDF Certificates", "i18n"]
     },
     {
-        id: 20,
-        title: "Recipe Management App",
-        description: "Interactive recipe application with meal planning, grocery list generation, nutritional information, and social sharing features. Includes recipe recommendations.",
-        image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352",
-        tag: ["All", "Web", "Lifestyle"],
-        gitUrl: "https://github.com/sairosthedev/recipe-app",
-        previewUrl: "https://recipe-management-app.vercel.app/",
-        technologies: ["React", "TypeScript", "Firebase", "Nutrition API", "Image Recognition", "PWA"]
-    },
-    {
         id: 24,
         title: "BELCIT Trading Supermarket System",
         description: "Enterprise supermarket management suite with a Next.js customer portal and Java-powered POS for in-store checkout, inventory, and reporting.",
@@ -248,5 +178,15 @@ export const projectsData = [
         gitUrl: "#",
         previewUrl: "https://belcit-frontend.vercel.app/",
         technologies: ["Next.js", "Tailwind CSS", "Java", "POS Integration", "REST APIs"]
+    },
+    {
+        id: 25,
+        title: "Value Point",
+        description: "Value Point Pvt Ltd delivers excellence across grocery retail, premium liquor selection, and professional construction services including sustainable biogas solutions.",
+        image: "/images/projects/value-point.png",
+        tag: ["All", "Web", "Enterprise"],
+        gitUrl: "#",
+        previewUrl: "https://value-point-website.vercel.app/",
+        technologies: ["Next.js", "React", "Tailwind CSS"]
     }
 ];
