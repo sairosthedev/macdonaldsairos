@@ -8,7 +8,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: FaGithub, url: "https://github.com/sairosthedev" },
-    { icon: FaWhatsapp, url: "https://wa.me/+263786033933" },
+    { icon: FaWhatsapp, url: "https://wa.me/+263787669200" },
     { icon: FaLinkedin, url: "https://www.linkedin.com/in/macdonald-sairos-8b1686186/" },
   ];
 

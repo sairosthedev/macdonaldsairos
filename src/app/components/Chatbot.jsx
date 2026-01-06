@@ -80,7 +80,7 @@ const Chatbot = () => {
         "While I don't have personal details like age, I can share that Macdonald is an experienced Full Stack Developer passionate about creating innovative web solutions."
       ],
       contact: [
-        "You can reach Macdonald through:\n• WhatsApp: +263786033933\n• LinkedIn: linkedin.com/in/macdonald-sairos-8b1686186\n• GitHub: github.com/sairosthedev\n• Email: macdonaldsairos@gmail.com",
+        "You can reach Macdonald through:\n• WhatsApp: +263787669200\n• LinkedIn: linkedin.com/in/macdonald-sairos-8b1686186\n• GitHub: github.com/sairosthedev\n• Email: macdonaldsairos@gmail.com",
         "Macdonald is always open to discussing new opportunities and collaborations. Feel free to reach out through any of his social channels!",
         "For business inquiries or just to say hello, Macdonald can be reached via WhatsApp, LinkedIn, or GitHub. He's very responsive!"
       ],

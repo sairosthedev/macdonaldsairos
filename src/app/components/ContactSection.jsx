@@ -23,7 +23,7 @@ const ContactSection = () => {
     const whatsappMessage = `*New Contact Message*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}`;
     
     // WhatsApp phone number (without + sign for wa.me)
-    const phoneNumber = "263786033933";
+    const phoneNumber = "263787669200";
     
     // Open WhatsApp with the pre-filled message
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
@@ -90,8 +90,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-slate-400">Phone</p>
-                    <Link href="tel:+263786033933" className="text-white hover:text-secondary-400 transition-colors">
-                      +263 786 033 933
+                    <Link href="tel:+263787669200" className="text-white hover:text-secondary-400 transition-colors">
+                      +263 787 669 200
                     </Link>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const ContactSection = () => {
                   {[
                     { icon: FaGithub, url: "https://github.com/sairosthedev" },
                     { icon: FaLinkedin, url: "https://www.linkedin.com/in/macdonald-sairos-8b1686186/" },
-                    { icon: FaWhatsapp, url: "https://wa.me/263786033933" }
+                    { icon: FaWhatsapp, url: "https://wa.me/263787669200" }
                   ].map((social, idx) => (
                     <Link
                       key={idx}

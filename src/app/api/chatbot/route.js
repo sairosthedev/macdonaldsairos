@@ -77,7 +77,7 @@ You are Macdonald Sairos' AI assistant. Here's everything you need to know about
 - Performance-optimized applications
 
 ## Contact Information
-- WhatsApp: +263786033933
+- WhatsApp: +263787669200
 - LinkedIn: https://www.linkedin.com/in/macdonald-sairos-8b1686186/
 - GitHub: https://github.com/sairosthedev
 - Email: macdonaldsairos@gmail.com
@@ -127,7 +127,7 @@ export async function POST(request) {
       console.log('OpenAI client not available, using fallback responses');
       return NextResponse.json(
         { 
-          response: "I'm currently offline, but I can still help! Macdonald is a Full Stack Developer specializing in React, Next.js, and modern web technologies. You can reach him at +263786033933 or visit his LinkedIn profile.",
+          response: "I'm currently offline, but I can still help! Macdonald is a Full Stack Developer specializing in React, Next.js, and modern web technologies. You can reach him at +263787669200 or visit his LinkedIn profile.",
           isFallback: true 
         },
         { status: 200 }
@@ -206,9 +206,9 @@ Guidelines:
     
     // Fallback response for any errors
     const fallbackResponses = [
-      "I'm having trouble processing that right now. Macdonald is a Full Stack Developer specializing in React and Next.js. You can reach him at +263786033933 for more information!",
-      "Sorry, I'm experiencing some technical difficulties. Macdonald Sairos is available for web development projects. Contact him via WhatsApp at +263786033933!",
-      "I'm temporarily unavailable, but Macdonald is a skilled Full Stack Developer. Visit his LinkedIn profile or WhatsApp him at +263786033933 for more details!"
+      "I'm having trouble processing that right now. Macdonald is a Full Stack Developer specializing in React and Next.js. You can reach him at +263787669200 for more information!",
+      "Sorry, I'm experiencing some technical difficulties. Macdonald Sairos is available for web development projects. Contact him via WhatsApp at +263787669200!",
+      "I'm temporarily unavailable, but Macdonald is a skilled Full Stack Developer. Visit his LinkedIn profile or WhatsApp him at +263787669200 for more details!"
     ];
 
     const randomFallback = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
