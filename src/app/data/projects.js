@@ -155,7 +155,7 @@ export const projectsData = [
         description: "Advanced AI-powered filter detection and removal tool to combat photo manipulation and dating scams. Privacy-protected, instant on-device results.",
         image: "https://images.unsplash.com/photo-1520975916090-3105956dac38",
         tag: ["All", "Web", "AI"],
-        gitUrl: "#",
+        gitUrl: "www.github.com/sairosthedev/truthlens",
         previewUrl: "https://truthlens-yauya.vercel.app/",
         technologies: ["Next.js", "Tailwind CSS", "AI/ML", "Image Processing", "Privacy-first"]
     },

@@ -6,7 +6,7 @@ import Link from "next/link";
 import {
   SiJavascript, SiReact, SiNodedotjs, SiNextdotjs, SiCsharp, SiPython,
   SiHtml5, SiCss3, SiExpress, SiPostgresql, SiMongodb, SiGit, SiDocker,
-  SiLinux, SiTypescript
+  SiLinux, SiTypescript, SiAngular
 } from "react-icons/si";
 
 const AboutSection = () => {
@@ -28,6 +28,9 @@ const AboutSection = () => {
     { name: "MongoDB", icon: SiMongodb },
     { name: "PostgreSQL", icon: SiPostgresql },
     { name: "Docker", icon: SiDocker },
+    {name:" Python", icon: SiPython },
+    { name: "C#", icon: SiCsharp },
+    {name:"Angular", icon: SiAngular },
     { name: "Git", icon: SiGit },
   ];
 
