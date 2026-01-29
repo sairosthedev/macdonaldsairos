@@ -4,7 +4,7 @@ import Head from 'next/head';
 const SEOHead = ({ 
   title, 
   description, 
-  keywords = ['full stack developer', 'react', 'next.js', 'node.js', 'web development', 'enterprise applications', 'e-commerce platforms', 'innovative web solutions', 'portfolio','miccstechnologies','macdonaldsairos','macdonaldsairos.com','macdonaldsairos.vercel.app','miccstechnologies.com','miccstechnologies.vercel.app','miccs'], 
+  keywords = ['full stack developer', 'react', 'next.js', 'node.js', 'web development', 'enterprise applications', 'e-commerce platforms', 'innovative web solutions', 'portfolio','miccstechnologies','macdonaldsairos','macdonaldsairos.com','macdonaldsairos.vercel.app','miccstechnologies.com','miccstechnologies.vercel.app','miccs','zimbabwe it company','software development zimbabwe','it solutions zimbabwe'], 
   image = '/images/og-image.png',
   url = 'https://macdonaldsairos.vercel.app,https://miccstechnologies.co.zw',
   type = 'website',
