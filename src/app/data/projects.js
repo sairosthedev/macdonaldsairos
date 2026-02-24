@@ -9,16 +9,16 @@ export const projectsData = [
         previewUrl: "https://candybucket.vercel.app/",
         technologies: ["React", "Tailwind CSS", "React Router", "Framer Motion"]
     },
-    // {
-    //     id: 2,
-    //     title: "Mac-Fi Network Management",
-    //     description: "Advanced WiFi service management platform with integrated authentication, automated billing, and network monitoring capabilities.",
-    //     image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8",
-    //     tag: ["All", "Enterprise"],
-    //     gitUrl: "https://github.com/miccx-24/mac-fi.git",
-    //     previewUrl: "https://mac-wifi.vercel.app/",
-    //     technologies: ["Next.js", "Tailwind CSS", "JWT Auth", "Payment Gateway"]
-    // },
+    {
+        id: 2,
+        title: "AutoTrack vehicle management system",
+        description: "Advanced vehicle tracking and management system with real-time GPS tracking, maintenance scheduling, and fleet analytics.",
+        image: "/images/CAR.png",
+        tag: ["All", "Enterprise"],
+        gitUrl: "#",
+        previewUrl: "https://my-cars-red.vercel.app",
+        technologies: ["React", "Node.js", "Tailwind CSS", "JWT Auth", "supabase", "Framer Motion"]
+    },
     // {
     //     id: 3,
     //     title: "Online Bus Ticketing",
