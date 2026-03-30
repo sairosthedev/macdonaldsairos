@@ -23,6 +23,7 @@ const AboutSection = () => {
     { name: "JavaScript", icon: SiJavascript },
     { name: "TypeScript", icon: SiTypescript },
     { name: "React", icon: SiReact },
+    {name:"React Native", icon: SiReact },
     { name: "Node.js", icon: SiNodedotjs },
     { name: "Next.js", icon: SiNextdotjs },
     { name: "MongoDB", icon: SiMongodb },

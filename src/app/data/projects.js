@@ -188,5 +188,15 @@ export const projectsData = [
         gitUrl: "#",
         previewUrl: "https://value-point-website.vercel.app/",
         technologies: ["Next.js", "React", "Tailwind CSS"]
+    },
+    {
+        id: 26,
+        title: "MICCS POS - Cloud Back Office",
+        description: "Cloud Back Office dashboard for MICCS POS with login and authenticated access.",
+        image: "/images/projects/7.png",
+        tag: ["All", "Enterprise", "Web"],
+        gitUrl: "#",
+        previewUrl: "https://salestracking-eight.vercel.app/",
+        technologies: ["Web App", "Authentication", "Dashboard"]
     }
 ];
