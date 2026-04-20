@@ -1,5 +1,15 @@
 export const projectsData = [
     {
+        id: 3,
+        title: "Call Central - Call Center Outsourcing",
+        description: "A professional call center outsourcing website for Call Central, featuring inbound and outbound call handling, marketing campaigns, omnichannel CRM support, and 24/7 customer service.",
+        image: "https://www.callcentral.co.zw/images/logo.png",
+        tag: ["All", "Web", "Enterprise"],
+        gitUrl: "#",
+        previewUrl: "https://www.callcentral.co.zw/",
+        technologies: ["Next.js", "Responsive Design", "SEO", "CRM Integration"]
+    },
+    {
         id: 1,
         title: "Candy Bucket E-commerce",
         description: "A fully functional e-commerce platform with shopping cart, product management, and secure checkout process.",
