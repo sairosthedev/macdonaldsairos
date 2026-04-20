@@ -5,6 +5,7 @@ import AboutSection from "./components/AboutSection";
 import AchievementsSection from "./components/AchievementsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ProjectShowcaseMarquee from "./components/ProjectShowcaseMarquee";
+import ServicesPricingSection from "./components/ServicesPricingSection";
 import Footer from "./components/Footer";
 import ContactSection from "./components/ContactSection";
 import ScrollToTop from "./components/ScrollToTop";
@@ -19,6 +20,7 @@ export default function Home() {
 
       <div className="container mx-auto px-6 py-12 space-y-24">
         <AboutSection />
+        <ServicesPricingSection />
         <ProjectsSection />
         <ContactSection />
       </div>
