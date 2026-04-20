@@ -199,7 +199,7 @@ const Chatbot = () => {
     <>
       {/* Floating Chat Button */}
       <motion.button
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-primary-600 rounded-full shadow-lg shadow-primary-500/30 hover:bg-primary-500 hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
@@ -225,7 +225,7 @@ const Chatbot = () => {
         {/* Pulse animation when closed */}
         {!isOpen && (
           <motion.div
-            className="absolute inset-0 rounded-full bg-purple-500"
+            className="absolute inset-0 rounded-full bg-primary-500"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.7, 0, 0.7],
@@ -247,10 +247,10 @@ const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-24 right-6 z-40 w-96 h-[500px] bg-[#111111] border border-purple-500/20 rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-24 right-6 z-40 w-96 h-[500px] bg-[#111111] border border-primary-500/20 rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Chat Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-4 text-white">
+            <div className="bg-primary-700 p-4 text-white">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="font-press-start text-sm">MS</span>
@@ -274,8 +274,8 @@ const Chatbot = () => {
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl ${
                       message.sender === "user"
-                        ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                        : "bg-[#1a1a1a] text-gray-100 border border-purple-500/20"
+                        ? "bg-primary-600 text-white"
+                        : "bg-[#1a1a1a] text-gray-100 border border-primary-500/20"
                     }`}
                   >
                     <p className="text-sm whitespace-pre-line">{message.text}</p>
@@ -293,20 +293,20 @@ const Chatbot = () => {
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-[#1a1a1a] border border-purple-500/20 p-3 rounded-2xl">
+                  <div className="bg-[#1a1a1a] border border-primary-500/20 p-3 rounded-2xl">
                     <div className="flex space-x-1">
                       <motion.div
-                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        className="w-2 h-2 bg-primary-500 rounded-full"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
                       />
                       <motion.div
-                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        className="w-2 h-2 bg-primary-500 rounded-full"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
                       />
                       <motion.div
-                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        className="w-2 h-2 bg-primary-500 rounded-full"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
                       />
@@ -329,7 +329,7 @@ const Chatbot = () => {
                       <motion.button
                         key={index}
                         onClick={() => handleQuickQuestion(question)}
-                        className="text-xs p-2 bg-[#1a1a1a] border border-purple-500/20 rounded-lg text-gray-300 hover:text-purple-400 hover:border-purple-500/40 transition-all duration-200"
+                        className="text-xs p-2 bg-[#1a1a1a] border border-primary-500/20 rounded-lg text-gray-300 hover:text-primary-300 hover:border-primary-500/40 transition-all duration-200"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -344,7 +344,7 @@ const Chatbot = () => {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-[#111111] border-t border-purple-500/20">
+            <div className="p-4 bg-[#111111] border-t border-primary-500/20">
               <div className="flex space-x-2">
                 <input
                   ref={inputRef}
@@ -353,12 +353,12 @@ const Chatbot = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything about Macdonald..."
-                  className="flex-1 p-3 bg-[#1a1a1a] border border-purple-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/40 transition-colors duration-200"
+                  className="flex-1 p-3 bg-[#1a1a1a] border border-primary-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-500/40 transition-colors duration-200"
                 />
                 <motion.button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all duration-200"
+                  className="p-3 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary-500 hover:shadow-lg transition-all duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

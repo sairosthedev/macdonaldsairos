@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-[#111111] to-[#0a0a0a]">
+    <section className="py-20 px-4 bg-[#0a0f1a]">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -112,7 +112,7 @@ const TestimonialsSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             What Clients Say
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-2"></div>
+          <div className="h-1 w-20 bg-primary-500 rounded-full mx-auto mt-2"></div>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
             Don't just take my word for it. Here's what my clients have to say about working together.
           </p>
@@ -120,7 +120,7 @@ const TestimonialsSection = () => {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Main Testimonial */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-700/50">
+          <div className="relative overflow-hidden rounded-2xl bg-slate-900/60 backdrop-blur-sm border border-slate-700/50">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -154,7 +154,7 @@ const TestimonialsSection = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="mb-6"
                   >
-                    <div className="h-12 w-12 text-purple-500/50 text-4xl">"</div>
+                    <div className="h-12 w-12 text-primary-400/60 text-4xl">"</div>
                   </motion.div>
 
                   {/* Rating */}
@@ -186,7 +186,7 @@ const TestimonialsSection = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                     className="mb-6"
                   >
-                    <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-purple-400 text-sm font-medium">
+                    <span className="inline-block px-4 py-2 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-300 text-sm font-medium">
                       {testimonials[currentIndex].project}
                     </span>
                   </motion.div>
@@ -247,7 +247,7 @@ const TestimonialsSection = () => {
                 }}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 scale-125' 
+                    ? 'bg-primary-500 scale-125' 
                     : 'bg-gray-600 hover:bg-gray-500'
                 }`}
                 whileHover={{ scale: 1.2 }}
@@ -275,9 +275,9 @@ const TestimonialsSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-              className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300"
+              className="text-center p-6 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-primary-500/30 transition-all duration-300"
             >
-              <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+              <div className="text-2xl md:text-3xl font-bold text-primary-300">
                 {stat.number}
               </div>
               <div className="text-gray-400 text-sm mt-2">{stat.label}</div>

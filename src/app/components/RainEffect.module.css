@@ -12,11 +12,7 @@
 .raindrop {
   position: absolute;
   width: 1px;
-  background: linear-gradient(
-    180deg, 
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: rgba(226, 232, 240, 0.22);
   animation: rain linear infinite;
   transform-origin: top;
 }

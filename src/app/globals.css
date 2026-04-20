@@ -7,7 +7,7 @@
   --foreground: #f8fafc;
   
   --primary-rgb: 14, 165, 233;
-  --secondary-rgb: 139, 92, 246;
+  --secondary-rgb: 6, 182, 212;
 }
 
 @layer base {
@@ -53,7 +53,8 @@
 .aurora-blob {
   position: absolute;
   filter: blur(80px);
-  opacity: 0.4;
+  opacity: 0.35;
+  border-radius: 9999px;
   animation: float 20s infinite alternate;
 }
 
@@ -62,7 +63,7 @@
   left: -10%;
   width: 50vw;
   height: 50vh;
-  background: radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(0,0,0,0) 70%);
+  background: rgba(14, 165, 233, 0.25);
   animation-delay: 0s;
 }
 
@@ -71,7 +72,7 @@
   right: -10%;
   width: 60vw;
   height: 60vh;
-  background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, rgba(0,0,0,0) 70%);
+  background: rgba(6, 182, 212, 0.18);
   animation-delay: -5s;
 }
 
@@ -80,7 +81,7 @@
   left: 40%;
   width: 40vw;
   height: 40vh;
-  background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(0,0,0,0) 70%);
+  background: rgba(30, 64, 175, 0.14);
   animation-delay: -10s;
 }
 

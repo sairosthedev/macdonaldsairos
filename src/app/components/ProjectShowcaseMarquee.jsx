@@ -19,8 +19,8 @@ const ProjectShowcaseMarquee = () => {
             </div>
 
             <div className="flex relative overflow-hidden">
-                <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-16 z-10 bg-background/95 backdrop-blur-sm pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-16 z-10 bg-background/95 backdrop-blur-sm pointer-events-none" />
 
                 <motion.div
                     className="flex gap-8 items-center"
@@ -44,7 +44,7 @@ const ProjectShowcaseMarquee = () => {
                                 fill
                                 className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent flex items-end p-4">
+                            <div className="absolute inset-0 bg-slate-950/55 flex items-end p-4">
                                 <span className="text-sm font-medium text-white truncate w-full">{project.title}</span>
                             </div>
                         </Link>

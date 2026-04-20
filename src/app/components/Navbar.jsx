@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400"
+            className="text-2xl font-bold font-heading text-slate-100 hover:text-primary-300 transition-colors duration-300"
           >
             MS.
           </Link>

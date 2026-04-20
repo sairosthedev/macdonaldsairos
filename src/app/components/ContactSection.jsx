@@ -184,7 +184,7 @@ const ContactSection = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg font-bold transition-all duration-300 shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40 ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
+                className={`w-full py-4 bg-primary-600 text-white rounded-lg font-bold transition-all duration-300 shadow-lg shadow-primary-500/20 hover:bg-primary-500 hover:shadow-primary-500/40 ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>

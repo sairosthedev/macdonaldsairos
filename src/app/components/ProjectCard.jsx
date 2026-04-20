@@ -19,7 +19,7 @@ const ProjectCard = ({ title, description, gitUrl, previewUrl, technologies, ima
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-slate-950/55 opacity-80 group-hover:opacity-65 transition-opacity duration-300" />
       </div>
 
       <div className="p-6 flex flex-col flex-grow relative">

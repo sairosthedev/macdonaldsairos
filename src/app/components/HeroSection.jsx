@@ -30,7 +30,7 @@ const HeroSection = () => {
 
             <h1 className="text-5xl lg:text-7xl font-bold font-heading mb-6 tracking-tight">
               <span className="text-white">Building the </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-500">
+              <span className="text-primary-300">
                 Digital Future
               </span>
             </h1>
@@ -83,7 +83,7 @@ const HeroSection = () => {
           >
             {/* Glassmorph Card Visual */}
             <div className="relative w-full h-full">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-full blur-[100px] animate-pulse"></div>
+              <div className="absolute inset-0 bg-primary-500/15 rounded-full blur-[100px] animate-pulse"></div>
 
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] glass-card rounded-2xl border border-slate-700/50 p-8 transform rotate-6 hover:rotate-0 transition-all duration-700">
                 <div className="flex items-center gap-4 mb-6">
