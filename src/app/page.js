@@ -6,6 +6,7 @@ import AchievementsSection from "./components/AchievementsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ProjectShowcaseMarquee from "./components/ProjectShowcaseMarquee";
 import ServicesPricingSection from "./components/ServicesPricingSection";
+import CompanyLogosCarousel from "./components/CompanyLogosCarousel";
 import Footer from "./components/Footer";
 import ContactSection from "./components/ContactSection";
 import ScrollToTop from "./components/ScrollToTop";
@@ -22,6 +23,7 @@ export default function Home() {
         <AboutSection />
         <ServicesPricingSection />
         <ProjectsSection />
+        <CompanyLogosCarousel />
         <ContactSection />
       </div>
 
