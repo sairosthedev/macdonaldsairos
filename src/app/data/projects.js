@@ -208,5 +208,15 @@ export const projectsData = [
         gitUrl: "#",
         previewUrl: "https://salestracking-eight.vercel.app/",
         technologies: ["Web App", "Authentication", "Dashboard"]
+    },
+    {
+        id: 27,
+        title: "Titan Protection - Fleet Tracking",
+        description: "Enterprise fleet management platform for Titan Protection featuring real-time GPS tracking, fuel variance & fraud detection, driver compliance and safety scoring, and unified fleet analytics for operations teams.",
+        image: "/images/projects/titan-tracking.png",
+        tag: ["All", "Enterprise", "Web"],
+        gitUrl: "#",
+        previewUrl: "https://tracking.tracar.co.zw/",
+        technologies: ["Fleet Management", "Real-time GPS", "Fuel Analytics", "Driver Safety", "Authentication", "Dashboard"]
     }
 ];
