@@ -218,5 +218,15 @@ export const projectsData = [
         gitUrl: "#",
         previewUrl: "https://tracking.tracar.co.zw/",
         technologies: ["Fleet Management", "Real-time GPS", "Fuel Analytics", "Driver Safety", "Authentication", "Dashboard"]
+    },
+    {
+        id: 28,
+        title: "Ministry of Agriculture - Tractor GPS Tracking",
+        description: "Government-grade live GPS tracking and fleet management platform for the Ministry of Lands, Agriculture, Fisheries, Water and Rural Development. Monitors Kurima tractors in real time with map view, geofences, status filtering (moving/stopped/offline), user management, alerts, audit logs, and reporting.",
+        image: "/images/projects/kurima-tractors.png",
+        tag: ["All", "Enterprise", "Web"],
+        gitUrl: "#",
+        previewUrl: "https://ministry-of-agric-tractors-frontend.vercel.app/",
+        technologies: ["Next.js", "Real-time GPS", "Google Maps", "Geofencing", "Fleet Management", "Role-based Auth", "Dashboard"]
     }
 ];
